@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from "../../Context"
-import ImageCard from "../../Components/Image Card/ImageCard"
 import { useNavigate } from 'react-router-dom';
+import InfiniteComponent from "../../Components/Infinite Scroll/InfiniteComponent"
 
 export default function Movie() {
     const { Acess_key } = useGlobalContext();
@@ -9,20 +9,41 @@ export default function Movie() {
 
     const [Data, setData] = useState();
     const [pageno, setpageno] = useState(1);
+    const [Totalresults, setTotalresults] = useState();
+
     const [IsLoading, setIsLoading] = useState();
+
+
+
+
 
     const fetchApi = async () => {
         try {
             setIsLoading(true);
-            var url = `https://api.themoviedb.org/3/discover/tv?api_key=${Acess_key}&include_adult=false&language=en-US&page=${pageno}`;
+            var url = `https://api.themoviedb.org/3/discover/tv?api_key=${Acess_key}&include_adult=false&language=en-US&page=1`;
             let data = await fetch(url);
             let parsedData = await data.json();
             setData(parsedData.results);
+            setTotalresults(parsedData.totalresults);
             setIsLoading(false);
-            console.log(parsedData.results);
         }
         catch (err) {
             console.log(err.message + " : error msg from fetch api");
+        }
+    }
+
+    const FetchMoreData = async () => {
+        try {
+            setpageno(pageno + 1);
+            var url = `https://api.themoviedb.org/3/discover/tv?api_key=${Acess_key}&include_adult=false&language=en-US&page=${pageno}`;
+            let data = await fetch(url);
+            let parsedData = await data.json();
+
+            setData(Data.concat(parsedData.results))
+            setTotalresults(parsedData.totalResults);
+        }
+        catch (err) {
+            return (err.message)
         }
     }
 
@@ -31,24 +52,11 @@ export default function Movie() {
         // eslint-disable-next-line
     }, []);
 
+
     return (
         <>
+            <InfiniteComponent Data={Data} totalresults={Totalresults} fetchMoreData={FetchMoreData} Keyword={Movie} />
 
-            {Data?.map((e, index) => {
-
-                const onclickHandler = () => {
-                    console.log(e);
-                    Navigate(`/TV-Series/${e.id}`);
-                }
-
-                return (
-                    <div onClick={onclickHandler} key={index} style={{ margin: "5px", border: "2px solid black", display: "inline-block", width: "250px", cursor: "pointer" }}>
-                        <ImageCard ImageUrl={e.poster_path} Description={e.id} />
-                        <p>{e.original_name}</p>
-                        <p>{e.popularity}</p>
-                    </div>
-                )
-            })};
         </>
     )
 }
