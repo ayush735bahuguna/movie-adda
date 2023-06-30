@@ -52,7 +52,7 @@ export default function Movie() {
 
     return (
         <>
-            <InfiniteComponent Data={Data} totalresults={Totalresults} fetchMoreData={FetchMoreData} Keyword={Movie} />
+            <InfiniteComponent Data={Data} totalresults={Totalresults} fetchMoreData={FetchMoreData} Keyword={"Movie"} />
         </>
     )
 }

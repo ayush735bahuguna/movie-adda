@@ -13,7 +13,7 @@ export default function TvDetailPage() {
             let data = await fetch(url);
             let parsedData = await data.json();
             setData(parsedData);
-            console.log(parsedData);
+            // console.log(parsedData);
         }
         catch (err) {
             console.log(err.message + "error msg from fetch api");

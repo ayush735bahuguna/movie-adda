@@ -81,7 +81,7 @@ export default function HomePage() {
                     {DataTV?.map((e, index) => {
 
                         const onclickHandler = () => {
-                            console.log(e);
+                            // console.log(e);
                             Navigate(`/TV-Series/${e.id}`);
                         }
 
