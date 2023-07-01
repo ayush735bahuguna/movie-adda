@@ -4,6 +4,7 @@ import ImageCard from "../../Components/Image Card/ImageCard"
 import { useNavigate, Link } from 'react-router-dom';
 import Footer from "../../Components/Footer/Footer"
 import "../../App.css"
+import HeroSection from '../../Components/Hero Section/HeroSection';
 
 export default function HomePage() {
     const { Acess_key } = useGlobalContext();
@@ -11,9 +12,9 @@ export default function HomePage() {
 
     const [Data, setData] = useState();
     const [DataTV, setDataTV] = useState();
-    const [Id, setId] = useState();
     const [pageno, setpageno] = useState(1);
     const [IsLoading, setIsLoading] = useState();
+    const [HeroSectionArray, setHeroSectionArray] = useState();
 
 
     const fetchApi = async () => {
@@ -23,13 +24,13 @@ export default function HomePage() {
             let data = await fetch(url);
             let parsedData = await data.json();
             setData(parsedData.results);
+            setHeroSectionArray(parsedData.results[Math.floor(Math.random() * 20)]);
             setIsLoading(false);
         }
         catch (err) {
             console.log(err.message + " : error msg from fetch api");
         }
     }
-
 
     const fetchApiTv = async () => {
         try {
@@ -54,9 +55,13 @@ export default function HomePage() {
 
     return (
         <>
+            <HeroSection HeroSectionArray={HeroSectionArray} />
+
             <div className="Wrapper">
-                <h1>Movies</h1>
-                <Link to="/Movie">More</Link>
+                <div style={{ display: "flex", justifyContent: "space-between", padding: "0px 20px", alignItems: "center" }}>
+                    <h1>Movies</h1>
+                    <Link to="/Movie">More</Link>
+                </div>
 
                 <div id="movieContainer" >
                     {Data?.map((e, index) => {
@@ -66,7 +71,7 @@ export default function HomePage() {
                         }
 
                         return (
-                            <a href='#' onClick={onclickHandler} key={index} style={{ margin: "5px", border: "2px solid black", display: "inline-block", width: "250px", cursor: "pointer" }}>
+                            <a href='#' onClick={onclickHandler} key={index} >
                                 <ImageCard DataArray={e} />
                             </a>
                         )
@@ -75,8 +80,11 @@ export default function HomePage() {
             </div>
 
             <div className="Wrapper">
-                <h1>TV Series</h1>
-                <Link to="/TV-Series">More</Link>
+                <div style={{ display: "flex", justifyContent: "space-between", padding: "0px 20px", alignItems: "center" }}>
+                    <h1>TV Series</h1>
+                    <Link to="/TV-Series">More</Link>
+                </div>
+
                 <div id='TvContainer'>
                     {DataTV?.map((e, index) => {
 
@@ -86,7 +94,7 @@ export default function HomePage() {
                         }
 
                         return (
-                            <a href='#' onClick={onclickHandler} key={index} style={{ margin: "5px", border: "2px solid black", display: "inline-block", width: "250px", cursor: "pointer" }}>
+                            <a href='#' onClick={onclickHandler} key={index} >
                                 <ImageCard DataArray={e} />
                             </a>
                         )

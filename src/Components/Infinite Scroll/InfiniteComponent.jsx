@@ -34,7 +34,7 @@ export default function InfiniteComponent(props) {
                             Navigate(`/${props.Keyword}/${e.id}`);
                         }
                         return (
-                            <a href='#' onClick={onclickHandler} key={index} style={{ margin: "5px", border: "2px solid black", display: "inline-block", width: "250px", cursor: "pointer" }}>
+                            <a href='#' onClick={onclickHandler} key={index} style={{ display: "inline-block" }}>
                                 <ImageCard DataArray={e} />
                             </a>
                         )

@@ -10,6 +10,10 @@
     display: none;
 }
 
+.bg-body-tertiary {
+    position: sticky;
+    top: 0px;
+}
 
 #movieContainer,
 #TvContainer {
@@ -20,7 +24,16 @@
 
 .Wrapper {
     margin: 50px 10px;
-    border: 2px solid black;
     padding: 5px;
+    height: "600px";
+}
 
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+p {
+    margin: 0px;
 }

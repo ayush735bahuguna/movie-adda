@@ -1,22 +1,15 @@
 import React from 'react'
-import { useGlobalContext } from "../../Context"
+// import { useGlobalContext } from "../../Context"
 import { Link } from 'react-router-dom';
 
 export default function Header() {
-    const { setquery } = useGlobalContext();
+    // const { setquery } = useGlobalContext();
 
     return (
-        <div style={{ backgroundColor: "beige" }}>
-
-
-
-
-
-
-
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <>
+            <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ zIndex: "9" }}>
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">MovieAdda</a>
+                    <div className="navbar-brand" >MovieAdda</div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -40,6 +33,6 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
-        </div>
+        </>
     )
 }
