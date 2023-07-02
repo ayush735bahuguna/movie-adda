@@ -16,7 +16,8 @@
 }
 
 #movieContainer,
-#TvContainer {
+#TvContainer,
+.horizontalScrollComponent {
     margin: 20px;
     display: flex;
     overflow: scroll hidden;

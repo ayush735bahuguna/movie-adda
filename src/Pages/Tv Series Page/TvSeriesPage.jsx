@@ -1,41 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from "../../Context"
-import { useNavigate } from 'react-router-dom';
 import InfiniteComponent from "../../Components/Infinite Scroll/InfiniteComponent"
+import useFetch from "../../Api/useFetch"
 
 export default function Movie() {
     const { Acess_key } = useGlobalContext();
-    const Navigate = useNavigate();
 
     const [Data, setData] = useState();
     const [pageno, setpageno] = useState(1);
     const [Totalresults, setTotalresults] = useState();
 
-    const [IsLoading, setIsLoading] = useState();
+    const { data, loading, error } = useFetch("/discover/tv", `?&page=${pageno}`);
 
+    useEffect(() => {
+        setData(data?.results);
+        setTotalresults(data?.totalresults);
+    }, [data]);
 
-
-
-
-    const fetchApi = async () => {
-        try {
-            setIsLoading(true);
-            var url = `https://api.themoviedb.org/3/discover/tv?api_key=${Acess_key}&include_adult=false&language=en-US&page=1`;
-            let data = await fetch(url);
-            let parsedData = await data.json();
-            setData(parsedData.results);
-            setTotalresults(parsedData.totalresults);
-            setIsLoading(false);
-        }
-        catch (err) {
-            console.log(err.message + " : error msg from fetch api");
-        }
-    }
 
     const FetchMoreData = async () => {
         try {
             setpageno(pageno + 1);
-            var url = `https://api.themoviedb.org/3/discover/tv?api_key=${Acess_key}&include_adult=false&language=en-US&page=${pageno}`;
+            var url = `https://api.themoviedb.org/3/discover/tv?api_key=${Acess_key}&include_adult=false&language=en-US&page=${pageno + 1}`;
             let data = await fetch(url);
             let parsedData = await data.json();
 
@@ -46,12 +32,6 @@ export default function Movie() {
             return (err.message)
         }
     }
-
-    useEffect(() => {
-        fetchApi();
-        // eslint-disable-next-line
-    }, []);
-
 
     return (
         <>

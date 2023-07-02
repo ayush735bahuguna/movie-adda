@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import "./MovieDetailPageCss.css"
+import Recommendations from './Elements/Recommendations';
+import Similar from './Elements/Similar';
+import Videos from './Elements/Videos';
 
 
 export default function MovieDetailPage() {
@@ -20,6 +23,10 @@ export default function MovieDetailPage() {
         }
     }
 
+
+    useEffect(() => {
+        fetchApi();
+    }, [params.id]);
 
     useEffect(() => {
         fetchApi();
@@ -68,6 +75,10 @@ export default function MovieDetailPage() {
                     </div>
                 </div >
 
+
+                <Recommendations movieId={Data?.id} />
+                <Similar movieId={Data?.id} />
+                <Videos movieId={Data?.id} />
             </div>
         </>
     )
