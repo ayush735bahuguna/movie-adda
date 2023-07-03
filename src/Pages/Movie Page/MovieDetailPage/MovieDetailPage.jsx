@@ -4,6 +4,9 @@ import "./MovieDetailPageCss.css"
 import Recommendations from './Elements/Recommendations';
 import Similar from './Elements/Similar';
 import Videos from './Elements/Videos';
+import Image from './Elements/Image';
+import Reviews from './Elements/Reviews';
+import WatchProviders from './Elements/WatchProviders';
 
 
 export default function MovieDetailPage() {
@@ -23,27 +26,14 @@ export default function MovieDetailPage() {
         }
     }
 
-
-    useEffect(() => {
-        fetchApi();
-    }, [params.id]);
-
-    useEffect(() => {
-        fetchApi();
-    }, []);
+    useEffect(() => { fetchApi() }, [params.id]);
+    useEffect(() => { fetchApi() }, []);
 
     return (
         <>
-            <div id="Main_Wrapper" style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/w500/${Data?.backdrop_path})`,
-                backgroundColor: "#00000060",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                backgroundBlendMode: "color-dodge",
-                width: "100vw",
-                height: "100vh",
-            }}>
+            <div id="Main_Wrapper"
+                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${Data?.backdrop_path})`, backgroundColor: "#00000060", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundBlendMode: "color-dodge", width: "100vw", height: "100vh", padding: "10px" }}
+            >
 
                 <div id="content" style={{ display: "flex", flexWrap: "wrap", paddingTop: "300px" }}>
                     <div id="img_wrapper">
@@ -75,27 +65,51 @@ export default function MovieDetailPage() {
                     </div>
                 </div >
 
-
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Recommendations</button>
+                <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Recommendations</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Similar Movies</button>
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Similar Movies</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Related Videos</button>
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Related Videos</button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link" id="pills-image-tab" data-bs-toggle="pill" data-bs-target="#pills-image" type="button" role="tab" aria-controls="pills-image" aria-selected="false">Related Images</button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link" id="pills-reviews-tab" data-bs-toggle="pill" data-bs-target="#pills-reviews" type="button" role="tab" aria-controls="pills-reviews" aria-selected="false">Reviews</button>
+                    </li>
+                    <li className="nav-item" role="presentation">
+                        <button className="nav-link" id="pills-watchProviders-tab" data-bs-toggle="pill" data-bs-target="#pills-watchProviders" type="button" role="tab" aria-controls="pills-watchProviders" aria-selected="false">Watch Providers</button>
                     </li>
                 </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"> <Recommendations movieId={Data?.id} /></div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0"> <Similar movieId={Data?.id} /></div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">   <Videos movieId={Data?.id} /></div>
+
+                <div className="tab-content" id="pills-tabContent">
+                    <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0"> <Recommendations movieId={Data?.id} />
+                    </div>
+
+                    <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
+                        <Similar movieId={Data?.id} />
+                    </div>
+
+                    <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex="0">
+                        <Videos movieId={Data?.id} />
+                    </div>
+
+                    <div className="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab" tabIndex="0">
+                        <Image movieId={Data?.id} />
+                    </div>
+
+                    <div className="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
+                        <Reviews movieId={Data?.id} />
+                    </div>
+
+                    <div className="tab-pane fade" id="pills-watchProviders" role="tabpanel" aria-labelledby="pills-watchProviders-tab" tabIndex="0">
+                        <WatchProviders movieId={Data?.id} />
+                    </div>
                 </div>
-
-
-
-
 
             </div>
         </>

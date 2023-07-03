@@ -1,11 +1,9 @@
 import '../../../../App.css'
 import ImageCard from "../../../../Components/Image Card/ImageCard"
-import { useNavigate } from 'react-router-dom';
 import useFetch from "../../../../Api/useFetch"
 
 export default function Videos(props) {
 
-    const Navigate = useNavigate();
     const { data } = useFetch(`/movie/${props.movieId}/videos`);
     // console.log(data?.results);
 
