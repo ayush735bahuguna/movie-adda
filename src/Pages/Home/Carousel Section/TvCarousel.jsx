@@ -16,7 +16,7 @@ export default function TvCarousel() {
             <div className="Wrapper">
                 <div style={{ display: "flex", justifyContent: "space-between", padding: "0px 20px", alignItems: "center" }}>
                     <h1>TV Series</h1>
-                    <Link to="/TV-Series">More</Link>
+                    <Link to="/tv">More</Link>
                 </div>
 
                 <div id='TvContainer'>
@@ -24,7 +24,7 @@ export default function TvCarousel() {
 
                         const onclickHandler = () => {
                             // console.log(e);
-                            Navigate(`/TV-Series/${e.id}`);
+                            Navigate(`/tv/${e.id}`);
                         }
 
                         return (

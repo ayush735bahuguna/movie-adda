@@ -22,13 +22,13 @@ function App() {
 
           {/* make nested loop */}
 
-          <Route path="/Movie" element={<Movie />} />
-          <Route path="/Movie/:id" element={<MovieDetailPage />} />
+          <Route path="/movie" element={<Movie />} />
+          <Route path="/movie/:id" element={<MovieDetailPage />} />
 
           {/* make nested loop */}
 
-          <Route path="/TV-Series" exact element={<TvSeries />} />
-          <Route path="/TV-Series/:id" element={<TvDetailPage />} />
+          <Route path="/tv" exact element={<TvSeries />} />
+          <Route path="/tv/:id" element={<TvDetailPage />} />
 
 
           <Route path="*" element={<Error />} />

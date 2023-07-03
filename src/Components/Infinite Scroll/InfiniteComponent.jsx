@@ -32,6 +32,7 @@ export default function InfiniteComponent(props) {
                     {props.Data?.map((e, index) => {
                         const onclickHandler = () => {
                             Navigate(`/${props.Keyword}/${e.id}`);
+                            console.log(props.Keyword);
                         }
                         return (
                             <a href='#' onClick={onclickHandler} key={index} style={{ display: "inline-block" }}>

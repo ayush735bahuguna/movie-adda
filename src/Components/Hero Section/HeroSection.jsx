@@ -7,7 +7,7 @@ export default function HeroSection(props) {
     // console.log(props.HeroSectionArray);
 
     const OnclickHandler = () => {
-        Navigate(`/Movie/${props.HeroSectionArray?.id}`);
+        Navigate(`/movie/${props.HeroSectionArray?.id}`);
     }
 
     return (

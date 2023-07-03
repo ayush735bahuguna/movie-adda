@@ -1,9 +1,28 @@
 import React from 'react'
 // import { useGlobalContext } from "../../Context"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../Context';
 
 export default function Header() {
-    // const { setquery } = useGlobalContext();
+
+    const Navigate = useNavigate();
+    const { setquery } = useGlobalContext();
+
+    const clicked = () => {
+        if (document.getElementById("searchbar").value.length > 0) {
+            setquery(document.getElementById("searchbar").value);
+            Navigate(`/Search/ ${document.getElementById("searchbar").value}`);
+        }
+    }
+
+    const keyPress = (e) => {
+        if (e.key === "Enter") {
+            if (e.target.value.length > 0) {
+                setquery(e.target.value);
+                Navigate(`/Search/ ${e.target.value}`)
+            }
+        }
+    }
 
     return (
         <>
@@ -20,16 +39,19 @@ export default function Header() {
 
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Movie">Explore Movie </Link>
+                                <Link className="nav-link" to="/movie">Explore Movie </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Tv-Series">Explore Tv-Series </Link>
+                                <Link className="nav-link" to="/tv">Explore Tv-Series </Link>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+
+
+                        <div className="d-flex" role="search">
+                            <input id='searchbar' onKeyDown={keyPress} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button onClick={clicked} className="btn btn-outline-success" type="submit">Search</button>
+                        </div>
+
                     </div>
                 </div>
             </nav>

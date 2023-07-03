@@ -16,7 +16,7 @@ export default function Similar(props) {
 
                 {data?.results?.map((e, index) => {
                     const onclickHandler = () => {
-                        Navigate(`/Movie/${e.id}`);
+                        Navigate(`/movie/${e.id}`);
                     }
                     return (
                         <a href='#' onClick={onclickHandler} key={index} style={{ display: "inline-block" }}>

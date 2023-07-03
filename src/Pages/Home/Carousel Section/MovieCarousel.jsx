@@ -23,14 +23,14 @@ export default function MovieCarousel() {
             {!loading && <div className="Wrapper">
                 <div style={{ display: "flex", justifyContent: "space-between", padding: "0px 20px", alignItems: "center" }}>
                     <h1>Movies</h1>
-                    <Link to="/Movie">More</Link>
+                    <Link to="/movie">More</Link>
                 </div>
 
                 <div id="movieContainer" >
                     {data?.results?.map((e, index) => {
 
                         const onclickHandler = () => {
-                            Navigate(`/Movie/${e.id}`);
+                            Navigate(`/movie/${e.id}`);
                         }
 
                         return (
