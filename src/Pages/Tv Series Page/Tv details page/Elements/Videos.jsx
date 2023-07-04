@@ -1,25 +1,25 @@
 import '../../../../App.css'
 import ImageCard from "../../../../Components/Image Card/ImageCard"
 import useFetch from "../../../../Api/useFetch"
-import { useEffect } from 'react';
 
-export default function WatchProviders(props) {
+export default function Videos(props) {
 
-    // const { data } = useFetch(`/movie/${props.movieId}/videos`);
+    const { data } = useFetch(`/tv/${props.movieId}/videos`);
+    // console.log(data?.results);
 
     return (
 
         <>
-            <h1>Watch Providers</h1>
+            <h1>Videos</h1>
             <div className='horizontalScrollComponent'>
-                add api
-                {/* {data?.results?.map((e, index) => {
+
+                {data?.results?.map((e, index) => {
                     return (
                         <div key={index}>
                             {e.id}
                         </div>
                     )
-                })}; */}
+                })};
 
             </div>
         </>

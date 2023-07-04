@@ -82,11 +82,11 @@ export default function MovieDetailPage() {
                         <button className="nav-link" id="pills-reviews-tab" data-bs-toggle="pill" data-bs-target="#pills-reviews" type="button" role="tab" aria-controls="pills-reviews" aria-selected="false">Reviews</button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-watchProviders-tab" data-bs-toggle="pill" data-bs-target="#pills-watchProviders" type="button" role="tab" aria-controls="pills-watchProviders" aria-selected="false">Watch Providers</button>
+                        <button className="nav-link" id="pills-watch-tab" data-bs-toggle="pill" data-bs-target="#pills-watch" type="button" role="tab" aria-controls="pills-watch" aria-selected="false">Watch</button>
                     </li>
                 </ul>
 
-                <div className="tab-content" id="pills-tabContent">
+                <div className="tab-content" id="pills-tabContent" >
                     <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0"> <Recommendations movieId={Data?.id} />
                     </div>
 
@@ -106,9 +106,11 @@ export default function MovieDetailPage() {
                         <Reviews movieId={Data?.id} />
                     </div>
 
-                    <div className="tab-pane fade" id="pills-watchProviders" role="tabpanel" aria-labelledby="pills-watchProviders-tab" tabIndex="0">
+                    <div className="tab-pane fade" id="pills-watch" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
                         <WatchProviders movieId={Data?.id} />
                     </div>
+
+
                 </div>
 
             </div>

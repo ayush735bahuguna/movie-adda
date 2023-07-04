@@ -10,7 +10,7 @@ export default function Movie() {
     const [pageno, setpageno] = useState(1);
     const [Totalresults, setTotalresults] = useState();
 
-    const { data, loading, error } = useFetch("/discover/tv", `?&page=${pageno}`);
+    const { data } = useFetch("/discover/tv", `?&page=${pageno}`);
 
     useEffect(() => {
         setData(data?.results);
@@ -35,7 +35,7 @@ export default function Movie() {
 
     return (
         <>
-            <InfiniteComponent Data={Data} totalresults={Totalresults} fetchMoreData={FetchMoreData} Keyword={"Tv-Series"} />
+            <InfiniteComponent Data={Data} totalresults={Totalresults} fetchMoreData={FetchMoreData} Keyword={"tv"} />
 
         </>
     )
