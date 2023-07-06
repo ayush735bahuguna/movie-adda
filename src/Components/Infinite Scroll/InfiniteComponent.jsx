@@ -28,7 +28,9 @@ export default function InfiniteComponent(props) {
                 endMessage={<h3> No More Images</h3>}
             >
 
-                <div >
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", alignContent: "center", alignItems: "center" }}>
+
+
                     {props.Data?.map((e, index) => {
                         const onclickHandler = () => {
                             Navigate(`/${props.Keyword}/${e.id}`);

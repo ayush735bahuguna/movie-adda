@@ -1,13 +1,12 @@
-import '../../../../App.css'
-import useFetch from "../../../../Api/useFetch"
+import '../../App.css'
+import useFetch from "../../Api/useFetch"
 
 export default function Reviews(props) {
-    const { data } = useFetch(`/movie/${props.movieId}/reviews`);
+    const { data } = useFetch(`/${props.keyWord}/${props.movieId}/reviews`);
 
     return (
 
         <>
-            <h1>Reviews</h1>
             <div className='horizontalScrollComponent'>
 
                 {data?.results?.map((e, index) => {

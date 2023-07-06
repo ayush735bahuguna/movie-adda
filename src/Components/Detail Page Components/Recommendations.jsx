@@ -1,17 +1,15 @@
-import '../../../../App.css'
-import ImageCard from "../../../../Components/Image Card/ImageCard"
+import '../../App.css'
+import ImageCard from "../Image Card/ImageCard"
 import { useNavigate } from 'react-router-dom';
-import useFetch from "../../../../Api/useFetch"
+import useFetch from "../../Api/useFetch"
 
-export default function Similar(props) {
-
+export default function Recommendations(props) {
     const Navigate = useNavigate();
-    const { data } = useFetch(`/tv/${props.movieId}/similar`);
+    const { data } = useFetch(`/${props.keyWord}/${props.movieId}/recommendations`);
 
     return (
 
         <>
-            <h1>Similar</h1>
             <div className='horizontalScrollComponent'>
 
                 {data?.results?.map((e, index) => {

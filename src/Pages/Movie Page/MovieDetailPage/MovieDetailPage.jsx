@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import "./MovieDetailPageCss.css"
-import Recommendations from './Elements/Recommendations';
-import Similar from './Elements/Similar';
-import Videos from './Elements/Videos';
-import Image from './Elements/Image';
-import Reviews from './Elements/Reviews';
-import WatchProviders from './Elements/WatchProviders';
+import Recommendations from '../../../Components/Detail Page Components/Recommendations';
+import Similar from '../../../Components/Detail Page Components/Similar';
+import Videos from '../../../Components/Detail Page Components/Videos';
+import Image from '../../../Components/Detail Page Components/Image';
+import Reviews from '../../../Components/Detail Page Components/Reviews';
+import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 export default function MovieDetailPage() {
@@ -31,39 +32,51 @@ export default function MovieDetailPage() {
 
     return (
         <>
-            <div id="Main_Wrapper"
-                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${Data?.backdrop_path})`, backgroundColor: "#00000060", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundBlendMode: "color-dodge", width: "100vw", height: "100vh", padding: "10px" }}
-            >
 
-                <div id="content" style={{ display: "flex", flexWrap: "wrap", paddingTop: "300px" }}>
-                    <div id="img_wrapper">
-                        <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
-                    </div>
+            <LazyLoadImage
+                id="background_img"
+                alt="..."
+                effect="blur"
+                src={`https://image.tmdb.org/t/p/w500/${Data?.backdrop_path}`}
+                placeholderSrc={Data?.backdrop_path}
+            />
 
-                    <div id="details">
-                        <div id="title">{Data?.original_title}</div>
-                        <div id="release_date">Release Date : {Data?.release_date}</div>
-                        <div id="language">language : {Data?.original_language}</div>
-                        <div id="homepage"><a href={Data?.homepage}>Homepage</a> </div>
-                        <div id="vote_average"> Average vote : {Data?.vote_average}</div>
-                        <div id="vote_count"> Vote Count : {Data?.vote_count}</div>
-                        <div id="overview"> Details : {Data?.overview}</div>
-                        <div id="status">status : {Data?.status}</div>
-                        <div id="popularity">popularity : {Data?.popularity}</div>
-                        <div id="run_time">run time : {Data?.runtime} min</div>
-                        <div id="revenue">revenue : {Data?.revenue} </div>
-                        <div id="budget">budget : {Data?.budget} </div>
-                        <div id="tagline">tagline : {Data?.tagline} </div>
-                        <div id='geners'> Geners: {Data?.genres.map((e, index) => <div className="badge text-bg-secondary" key={index}>{e.name}</div>)} </div>
-                        <div id='production_companies'> Production Companies:
-                            {Data?.production_companies.map((e, index) => <div key={index}>
-                                {e?.name}
-                                <img width={"100px"} src={`https://image.tmdb.org/t/p/w500/${e?.logo_path}`} alt="poster" id="poster" />
-                                {e?.origin_country}
-                            </div>)}
-                        </div>
+            <div id="content" >
+
+                <div id="img_wrapper">
+                    <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
+                </div>
+
+
+                <div id="details">
+                    <div id="title">{Data?.original_title}</div>
+                    <div id='geners'>  {Data?.genres.map((e, index) => <div id='genersTag' className="badge text-bg-secondary" key={index}>{e.name}</div>)} </div>
+                    <div id="language">language : {Data?.original_language}</div>
+                    <div id="release_date">Release Date : {Data?.release_date}</div>
+                    <div id="vote_average"> Average vote : {Data?.vote_average}</div>
+                    <div id="vote_count"> Vote Count : {Data?.vote_count}</div>
+                    <div id="overview"> Details : {Data?.overview}</div>
+                    <div id="status">status : {Data?.status}</div>
+
+                    <div id="popularity">popularity : {Data?.popularity}</div>
+
+                    <div id="run_time">run time : {Data?.runtime} min</div>
+                    <div id="revenue">revenue : ${Data?.revenue} </div>
+                    <div id="budget">budget : ${Data?.budget} </div>
+                    <div id="tagline">tagline : {Data?.tagline} </div>
+                    <div id='production_companies'> Production Companies:
+                        {Data?.production_companies.map((e, index) => <div key={index}>
+                            {e?.name}
+                            <img width={"100px"} src={`https://image.tmdb.org/t/p/w500/${e?.logo_path}`} alt="poster" />
+                            {e?.origin_country}
+                        </div>)}
                     </div>
-                </div >
+                    <div id="homepage"><a href={Data?.homepage}>Homepage</a> </div>
+                </div>
+
+            </div >
+
+            <div id="tabs">
 
                 <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li className="nav-item" role="presentation">
@@ -87,33 +100,36 @@ export default function MovieDetailPage() {
                 </ul>
 
                 <div className="tab-content" id="pills-tabContent" >
-                    <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0"> <Recommendations movieId={Data?.id} />
+                    <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
+                        <Recommendations movieId={Data?.id} keyWord={"movie"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
-                        <Similar movieId={Data?.id} />
+                        <Similar movieId={Data?.id} keyWord={"movie"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex="0">
-                        <Videos movieId={Data?.id} />
+                        <Videos movieId={Data?.id} keyWord={"movie"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab" tabIndex="0">
-                        <Image movieId={Data?.id} />
+                        <Image movieId={Data?.id} keyWord={"movie"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
-                        <Reviews movieId={Data?.id} />
+                        <Reviews movieId={Data?.id} keyWord={"movie"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-watch" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
-                        <WatchProviders movieId={Data?.id} />
+                        <WatchProviders movieId={Data?.id} keyWord={"movie"} />
                     </div>
 
 
                 </div>
 
             </div>
+
         </>
+
     )
 }

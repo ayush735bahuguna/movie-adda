@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import "./TvDetailPage.css"
-import Image from './Elements/Images';
-import Recommendations from './Elements/Recommendations';
-import Reviews from './Elements/Reviews';
-import Similar from './Elements/Similar';
-import Videos from './Elements/Videos';
-import WatchProviders from './Elements/WatchProviders';
+import Image from '../../../Components/Detail Page Components/Image';
+import Recommendations from '../../../Components/Detail Page Components/Recommendations';
+import Reviews from '../../../Components/Detail Page Components/Reviews';
+import Similar from '../../../Components/Detail Page Components/Similar';
+import Videos from '../../../Components/Detail Page Components/Videos';
+import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
 
 
 
@@ -89,28 +89,28 @@ export default function TvDetailPage() {
 
                 <div className="tab-content" id="pills-tabContent" >
                     <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
-                        <Recommendations movieId={Data?.id} />
+                        <Recommendations movieId={Data?.id} keyWord={"tv"} />
 
                     </div>
 
                     <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
-                        <Similar movieId={Data?.id} />
+                        <Similar movieId={Data?.id} keyWord={"tv"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex="0">
-                        < Videos movieId={Data?.id} />
+                        < Videos movieId={Data?.id} keyWord={"tv"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab" tabIndex="0">
-                        <Image movieId={Data?.id} />
+                        <Image movieId={Data?.id} keyWord={"tv"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
-                        <Reviews movieId={Data?.id} />
+                        <Reviews movieId={Data?.id} keyWord={"tv"} />
                     </div>
 
                     <div className="tab-pane fade" id="pills-watch" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
-                        <WatchProviders movieId={Data?.id} />
+                        <WatchProviders movieId={Data?.id} keyWord={"tv"} />
                     </div>
 
 

@@ -1,11 +1,12 @@
-import '../../../../App.css'
-import ImageCard from "../../../../Components/Image Card/ImageCard"
-import useFetch from "../../../../Api/useFetch"
+import '../../App.css'
+
+import ImageCard from "../Image Card/ImageCard"
+import useFetch from "../../Api/useFetch"
 import { useEffect } from 'react';
 
 export default function WatchProviders(props) {
 
-    // const { data } = useFetch(`/movie/${props.movieId}/videos`);
+    // const { data } = useFetch(`/${props.keyWord}/${props.movieId}/videos`);
 
     return (
 

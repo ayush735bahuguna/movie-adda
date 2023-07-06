@@ -1,16 +1,15 @@
-import '../../../../App.css'
-import ImageCard from "../../../../Components/Image Card/ImageCard"
-import useFetch from "../../../../Api/useFetch"
+import '../../App.css'
+import ImageCard from "../Image Card/ImageCard"
+import useFetch from "../../Api/useFetch"
 
 export default function Videos(props) {
 
-    const { data } = useFetch(`/movie/${props.movieId}/videos`);
+    const { data } = useFetch(`/${props.keyWord}/${props.movieId}/videos`);
     // console.log(data?.results);
 
     return (
 
         <>
-            <h1>Videos</h1>
             <div className='horizontalScrollComponent'>
 
                 {data?.results?.map((e, index) => {
