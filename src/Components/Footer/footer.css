@@ -1,0 +1,14 @@
+.footerIcons {
+    scale: 2;
+    margin: 15px;
+}
+
+
+
+@media screen and (max-width:480px) {
+
+    #FooterWrapper {
+        justify-content: center !important;
+    }
+
+}

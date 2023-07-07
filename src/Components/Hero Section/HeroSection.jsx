@@ -21,7 +21,7 @@ export default function HeroSection(props) {
             </div>
             <div id="heroSectionImg">
 
-                <img style={{ height: "90vh", width: "100vw", objectFit: "cover" }} src={`https://image.tmdb.org/t/p/w780/${props.HeroSectionArray?.backdrop_path}`} alt="." />
+                <img style={{ height: "90vh", width: "100vw", objectFit: "cover" }} src={`https://image.tmdb.org/t/p/original/${props.HeroSectionArray?.backdrop_path}`} alt="." />
 
             </div>
         </div>

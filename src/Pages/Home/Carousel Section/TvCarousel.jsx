@@ -21,14 +21,8 @@ export default function TvCarousel() {
 
                 <div id='TvContainer'>
                     {data?.results?.map((e, index) => {
-
-                        const onclickHandler = () => {
-                            // console.log(e);
-                            Navigate(`/tv/${e.id}`);
-                        }
-
                         return (
-                            <a href='#' onClick={onclickHandler} key={index} >
+                            <a href={`/tv/${e.id}`} key={index} >
                                 <ImageCard DataArray={e} />
                             </a>
                         )

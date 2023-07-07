@@ -1,13 +1,15 @@
 import '../../App.css'
 import useFetch from "../../Api/useFetch"
+import Loader from '../loader/loader';
 
 export default function Reviews(props) {
-    const { data } = useFetch(`/${props.keyWord}/${props.movieId}/reviews`);
+    const { data, loading } = useFetch(`/${props.keyWord}/${props.movieId}/reviews`);
 
     return (
 
         <>
-            <div className='horizontalScrollComponent'>
+            {loading && <h1><Loader /></h1>}
+            {!loading && <div className='horizontalScrollComponent'>
 
                 {data?.results?.map((e, index) => {
 
@@ -21,9 +23,9 @@ export default function Reviews(props) {
 
                         </div>
                     )
-                })};
+                })}
 
-            </div>
+            </div>}
         </>
     )
 }

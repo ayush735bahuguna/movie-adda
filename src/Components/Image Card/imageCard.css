@@ -1,0 +1,8 @@
+#imageCardOverlay {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%;
+}

@@ -29,12 +29,10 @@ export default function MovieCarousel() {
                 <div id="movieContainer" >
                     {data?.results?.map((e, index) => {
 
-                        const onclickHandler = () => {
-                            Navigate(`/movie/${e.id}`);
-                        }
+
 
                         return (
-                            <a href='#' onClick={onclickHandler} key={index} >
+                            <a href={`/movie/${e.id}`} key={index} >
                                 <ImageCard DataArray={e} />
                             </a>
                         )

@@ -1,21 +1,20 @@
-#background {
-    margin: 0;
-    padding: 0;
-}
+/* #Container {
+    position: absolute;
+} */
 
 #background_img {
     z-index: -1;
     width: 100vw;
     height: 100vh;
+    position: relative;
     position: fixed;
-    top: 0;
+    top: -18px;
     background-color: black;
     object-fit: cover;
 }
 
 #content {
     background-color: white;
-    border-radius: 0 20px 0 0;
     padding: 10px;
     display: flex;
     margin-top: 65vh;
@@ -23,7 +22,7 @@
 
     #img_wrapper {
         position: sticky;
-        top: 175px;
+        top: 162px;
         height: 356px;
 
         #poster {
@@ -31,6 +30,7 @@
             border-radius: 10px;
             position: relative;
             top: -95px;
+            margin: 5px;
             margin-left: -5px;
         }
     }
@@ -57,17 +57,20 @@
     }
 }
 
-#tabs {
-    padding: 10px;
+.tabs {
+    padding: 20px;
 }
 
+/* .OtherTabs {
+    height: 500px;
+    overflow: hidden;
+} */
 
 @media screen and (max-width:600px) {
     #content {
         flex-direction: column;
         align-items: center;
         margin-top: 50px;
-        padding: 0px;
     }
 
 

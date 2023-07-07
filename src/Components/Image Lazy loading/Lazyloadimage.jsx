@@ -7,7 +7,6 @@ export default function Lazyloadimage(props) {
 
         <LazyLoadImage
             style={props.css}
-            className="card card-img-top"
             alt="..."
             effect="blur"
             src={`https://image.tmdb.org/t/p/w500/${props.imgurl}`}
