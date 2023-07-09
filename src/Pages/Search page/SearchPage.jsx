@@ -3,6 +3,7 @@ import useFetch from "../../Api/useFetch"
 import { useGlobalContext } from "../../Context"
 import { useParams } from 'react-router-dom';
 import InfiniteComponent from "../../Components/Infinite Scroll/InfiniteComponent"
+import Loader from "../../Components/loader/loader"
 
 export default function SearchPage() {
 
@@ -17,7 +18,7 @@ export default function SearchPage() {
         setquery(params.text);
     }, [params.text]);
 
-    const { data } = useFetch(`/search/${Keyword}?query=${query}`, `?&page=${pageno}`);
+    const { data, loading } = useFetch(`/search/${Keyword}?query=${query}`, `?&page=${pageno}`);
 
     useEffect(() => {
         setData(data?.results);
@@ -33,7 +34,7 @@ export default function SearchPage() {
             let parsedData = await data.json();
 
             setData(Data.concat(parsedData.results))
-            setTotalresults(parsedData.totalResults);
+            setTotalresults(parsedData.total_results);
         }
         catch (err) {
             return (err.message)
@@ -51,27 +52,38 @@ export default function SearchPage() {
 
     return (
         <>
-            <p id='ScrollAfterSearch' style={{ fontSize: "30px", padding: "10px" }}> Search Result For <strong> {query} </strong> </p >
-
-            <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item" role="presentation">
-                    <button onClick={KeyWordSelectorMovie} className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Movies</button>
-                </li>
-                <li className="nav-item" role="presentation">
-                    <button onClick={KeyWordSelectorTv} className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Tv Serials</button>
-                </li>
-
-            </ul>
-            <div className="tab-content" id="myTabContent">
-                <div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabIndex="0">
-                </div>
-                <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabIndex="0">
-                </div>
-            </div>
+            <p id='ScrollAfterSearch' style={{ fontSize: "25px", padding: "10px" }}> Search Result For <strong> {query} </strong> </p >
 
 
+            {data?.results?.length !== 0 ? (
+                <div>
+                    {loading && <h1> <Loader /></h1>}
+                    {!loading && <div>
+                        <ul className="nav nav-tabs" id="myTab" role="tablist">
+                            <li className="nav-item" role="presentation">
+                                <button onClick={KeyWordSelectorMovie} className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Movies</button>
+                            </li>
+                            <li className="nav-item" role="presentation">
+                                <button onClick={KeyWordSelectorTv} className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Tv Serials</button>
+                            </li>
 
-            <InfiniteComponent Data={Data} totalresults={Totalresults} fetchMoreData={FetchMoreData} Keyword={Keyword} />
+                        </ul>
+                        <div className="tab-content" id="myTabContent">
+                            <div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabIndex="0">
+                            </div>
+                            <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabIndex="0">
+                            </div>
+                        </div>
+
+
+
+                        <InfiniteComponent Data={Data} totalresults={Totalresults} fetchMoreData={FetchMoreData} Keyword={Keyword} />
+                    </div>
+                    }
+                </div >
+            ) : (<h1 style={{ margin: "10px", textAlign: "center" }}>No content available</h1 >)
+            }
+
 
         </>
     )

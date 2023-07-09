@@ -17,13 +17,11 @@ export default function Credits(props) {
             {loading && <h1> <Loader />  </h1>}
             {!loading &&
                 <>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <h3>Highly Paid cast</h3>
-                        <Link to="#">More Credits</Link>
-                    </div>
+                    <h3>Highly Paid cast</h3>
 
 
                     <div className='horizontalScrollComponent'>
+
                         {data?.cast?.slice(0, 10).map((e, index) => {
                             return (
                                 <div key={index} style={{ margin: "5px", textAlign: "center" }}>
@@ -34,6 +32,9 @@ export default function Credits(props) {
                             )
                         })}
 
+                        <div >
+                            <i style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "80%", width: "100px", cursor: "pointer", fontSize: "50px" }} className="bi bi-arrow-right-circle-fill"></i>
+                        </div>
                     </div>
                 </>}
         </>

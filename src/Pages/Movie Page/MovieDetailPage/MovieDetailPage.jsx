@@ -9,9 +9,10 @@ import Reviews from '../../../Components/Detail Page Components/Reviews';
 import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
 import Credits from '../../../Components/Detail Page Components/Credits';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Link } from 'react-router-dom';
 import Footer from "../../../Components/Footer/Footer"
 import Loader from '../../../Components/loader/loader';
+import CircleRating from '../../../Components/circleRating/CircleRating';
+import Lazyloadimage from '../../../Components/Image Lazy loading/Lazyloadimage';
 
 
 
@@ -38,8 +39,8 @@ export default function MovieDetailPage() {
         }
     }
 
-    useEffect(() => { fetchApi() }, [params.id]);
     useEffect(() => { fetchApi() }, []);
+    useEffect(() => { fetchApi() }, [params.id]);
 
     return (
         <>
@@ -54,7 +55,7 @@ export default function MovieDetailPage() {
                     placeholderSrc={Data?.backdrop_path}
                 />
 
-                <div id="content" >
+                <div id="content"  >
 
                     <div id="img_wrapper">
                         <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
@@ -62,29 +63,72 @@ export default function MovieDetailPage() {
 
 
                     <div id="details">
-                        <div id="title">{Data?.original_title}</div>
-                        <div id='geners'>  {Data?.genres.map((e, index) => <div id='genersTag' className="badge text-bg-secondary" key={index}>{e.name}</div>)} </div>
-                        <div id="language">language : {Data?.original_language}</div>
-                        <div id="release_date">Release Date : {Data?.release_date}</div>
-                        <div id="vote_average"> Average vote : {Data?.vote_average}</div>
-                        <div id="vote_count"> Vote Count : {Data?.vote_count}</div>
-                        <div id="overview"> Details : {Data?.overview}</div>
-                        <div id="status">status : {Data?.status}</div>
+                        <span id="title">{Data?.original_title}</span>
 
-                        <div id="popularity">popularity : {Data?.popularity}</div>
+                        <div id="tagline" className='movieSmallDetails'> " {Data?.tagline}  "</div>
 
-                        <div id="run_time">run time : {Data?.runtime} min</div>
-                        <div id="revenue">revenue : ${Data?.revenue} </div>
-                        <div id="budget">budget : ${Data?.budget} </div>
-                        <div id="tagline">tagline : {Data?.tagline} </div>
-                        <div id='production_companies'> Production Companies:
-                            {Data?.production_companies.map((e, index) => <div key={index}>
-                                {e?.name}
-                                <img width={"100px"} src={`https://image.tmdb.org/t/p/w500/${e?.logo_path}`} alt="poster" />
-                                {e?.origin_country}
-                            </div>)}
+                        <div id='geners'>
+                            {Data?.genres.map((e, index) => <div id='genersTag' className="badge text-bg-secondary" key={index}>{e.name}</div>)}
                         </div>
-                        <div id="homepage"><a href={Data?.homepage}>Homepage</a> </div>
+
+
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "5px" }}>
+                            <div id="vote_average" style={{ width: "60px" }}>
+                                <CircleRating rating={Data?.vote_average.toFixed(1)} />
+                            </div>
+
+                            <div></div>
+                        </div>
+
+                        <span className='movieSmallDetails' style={{ margin: "5px" }} > {Data?.status}</span>
+
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "0px 10px 0px 0px" }}>
+                            <div>
+                                Release Date : <span className='movieSmallDetails'> {Data?.release_date}</span>
+                            </div>
+                            <div>
+                                Run-time : <span className='movieSmallDetails'> {Data?.runtime} min</span>
+                            </div>
+                            <div></div>
+                        </div>
+
+
+
+                        <hr></hr>
+                        <div id="overview">
+                            Details :<span className='movieSmallDetails'> {Data?.overview}</span>
+                        </div>
+                        <hr></hr>
+
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <div>
+                                budget :  <span className='movieSmallDetails'> ${Data?.budget} </span>
+                            </div>
+                            <div>
+                                revenue :    <span className='movieSmallDetails'> ${Data?.revenue} </span>
+                            </div>
+                            <div></div>
+
+
+                        </div>
+
+                        <hr></hr>
+                        Production Companies :
+                        <div id='production_companies' style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", alignContent: "center", alignItems: "center"
+                        }}>
+
+                            {Data?.production_companies.map((e, index) =>
+                                <div key={index} className='movieSmallDetails' style={{ display: "flex", alignItems: "center", width: "fit-content", margin: "5px", flexDirection: "column" }}>
+                                    <p> {e?.name}</p>
+                                    <Lazyloadimage imgurl={e?.logo_path} css={{ height: "60px", width: "60px", ObjectFit: "contain", margin: "10px" }} />
+                                </div>
+                            )}
+                        </div>
+
+
+                        <div id="homepage"><a href={Data?.homepage}> Homepage</a> </div>
                     </div>
 
                 </div >
@@ -95,6 +139,8 @@ export default function MovieDetailPage() {
                 <div className="tabs">
                     <Credits movieId={Data?.id} keyWord={"movie"} />
                 </div>
+
+
 
 
                 <div className="tabs mediaTabs">
@@ -111,16 +157,12 @@ export default function MovieDetailPage() {
                     <div className="tab-content" id="pills-tabContent" >
 
                         <div className="tab-pane fade show active" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab" tabIndex="0">
-                            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <Link to="#">More Images</Link>
-                            </div>
+
                             <Image movieId={Data?.id} keyWord={"movie"} />
                         </div>
 
                         <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex="0">
-                            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                <Link to="#">More Video</Link>
-                            </div>                            <Videos movieId={Data?.id} keyWord={"movie"} />
+                            <Videos movieId={Data?.id} keyWord={"movie"} />
                         </div>
 
                     </div>
@@ -162,7 +204,7 @@ export default function MovieDetailPage() {
 
 
                 <Footer />
-            </div>
+            </div >
 
             }
         </>

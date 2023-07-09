@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
-import "./TvDetailPage.css"
 import Image from '../../../Components/Detail Page Components/Image';
 import Recommendations from '../../../Components/Detail Page Components/Recommendations';
 import Reviews from '../../../Components/Detail Page Components/Reviews';
@@ -10,19 +9,36 @@ import WatchProviders from '../../../Components/Detail Page Components/WatchProv
 
 
 
+import "../../Movie Page/MovieDetailPage/MovieDetailPageCss.css"
+
+import Credits from '../../../Components/Detail Page Components/Credits';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Footer from "../../../Components/Footer/Footer"
+import Loader from '../../../Components/loader/loader';
+import CircleRating from '../../../Components/circleRating/CircleRating';
+import Lazyloadimage from '../../../Components/Image Lazy loading/Lazyloadimage';
+import { Link } from 'react-router-dom';
+
+
+
 export default function TvDetailPage() {
     const params = useParams();
     const [Data, setData] = useState();
+    const [loading, setloading] = useState(true);
 
     const fetchApi = async () => {
         try {
+            setloading(true);
             var url = `https://api.themoviedb.org/3/tv/${params.id}?api_key=d1c9a9af41297f93b7ade6e2e96a03fd&language=en-US`;
             let data = await fetch(url);
+            setloading(true);
             let parsedData = await data.json();
             setData(parsedData);
+            setloading(false);
             // console.log(parsedData);
         }
         catch (err) {
+            setloading(false);
             console.log(err.message + "error msg from fetch api");
         }
     }
@@ -33,90 +49,162 @@ export default function TvDetailPage() {
 
     return (
         <>
-            <div id="Main_Wrapper"
-                style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/w500/${Data?.backdrop_path})`, backgroundColor: "#00000060", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundBlendMode: "color-dodge", width: "100vw", height: "100vh",
-                }}
-            >
+            {loading && <h1> <Loader /></h1>}
+            {!loading && <div id='Container'>
 
-                <div id="content" style={{ paddingTop: "300px" }}>
+                <LazyLoadImage
+                    id="background_img"
+                    alt="..."
+                    effect="blur"
+                    src={`https://image.tmdb.org/t/p/w500/${Data?.backdrop_path}`}
+                    placeholderSrc={Data?.backdrop_path}
+                />
+
+                <div id="content">
+
                     <div id="img_wrapper">
                         <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
                     </div>
-                    <div id="details">
-                        <div id="title">{Data?.original_name}</div>
-                        <div id="status">{Data?.status}</div>
-                        <div id="release_date">First Air Date : {Data?.first_air_date}</div>
-                        <div id="language">language : {Data?.original_language}</div>
-                        <div id="homepage"><a href={Data?.homepage}>Homepage</a> </div>
-                        <div id="vote_average"> Average vote : {Data?.vote_average}</div>
-                        <div id="vote_count"> Vote Count : {Data?.vote_count}</div>
-                        <div id="number_of_episodes"> Number Of Episodes : {Data?.number_of_episodes}</div>
-                        <div id="number_of_seasons"> Number Of Seasons : {Data?.number_of_seasons}</div>
 
-                        <div id='geners'> Geners: {Data?.genres.map((e, index) => <div key={index}>{e.name}</div>)} </div>
-                        <div id='production_companies'> Production Companies:
-                            {Data?.production_companies.map((e, index) => <div key={index}>
-                                {e?.name}
-                                <img width={"100px"} src={`https://image.tmdb.org/t/p/w500/${e?.logo_path}`} alt="poster" id="poster" />
-                                {e?.origin_country}
-                            </div>)}
+                    <div id="details">
+
+                        <span id="title">{Data?.original_name}</span>
+                        <div id="tagline" className='movieSmallDetails'> " {Data?.tagline}  "</div>
+
+                        <div id='geners'>
+                            {Data?.genres.map((e, index) => <div id='genersTag' className="badge text-bg-secondary" key={index}>{e.name}</div>)}
                         </div>
+
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "5px" }}>
+                            <div id="vote_average" style={{ width: "60px" }}>
+                                <CircleRating rating={Data?.vote_average.toFixed(1)} />
+                            </div>
+
+                            <div></div>
+                        </div>
+
+                        <span className='movieSmallDetails' style={{ margin: "5px" }} > {Data?.status}</span>
+
+                        <div id="release_date">First Air Date : {Data?.first_air_date}</div>
+
+                        <hr></hr>
+                        <div id="overview">
+                            Details :<span className='movieSmallDetails'> {Data?.overview}</span>
+                        </div>
+                        <hr></hr>
+
+                        <div id="number_of_episodes">
+                            Number Of Episodes  :  <span className='movieSmallDetails'>    {Data?.number_of_episodes}</span></div>
+                        <div id="number_of_seasons">
+                            Number Of Seasons  :  <span className='movieSmallDetails'>   {Data?.number_of_seasons}</span></div>
+                        <Link to={`/tv/${params.id}/epoisode`}>All Episodes</Link>
+                        <hr></hr>
+
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <div>
+                                budget :  <span className='movieSmallDetails'> ${Data?.budget} </span>
+                            </div>
+                            <div>
+                                revenue :    <span className='movieSmallDetails'> ${Data?.revenue} </span>
+                            </div>
+                            <div></div>
+
+
+                        </div>
+                        <hr></hr>
+
+                        Production Companies :
+                        <div id='production_companies' style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", alignContent: "center", alignItems: "center"
+                        }}>
+
+                            {Data?.production_companies.map((e, index) =>
+                                <div key={index} className='movieSmallDetails' style={{ display: "flex", alignItems: "center", width: "fit-content", margin: "5px", flexDirection: "column" }}>
+                                    <p> {e?.name}</p>
+                                    <Lazyloadimage imgurl={e?.logo_path} css={{ height: "60px", width: "100px", ObjectFit: "contain", margin: "10px" }} />
+                                </div>
+                            )}
+                        </div>
+
+                        <hr></hr>
+
+                        <div id="homepage"><a href={Data?.homepage}>Homepage</a> </div>
                     </div>
+
+
                 </div >
 
+                <div className="tabs">
+                    <WatchProviders movieId={Data?.id} keyWord={"tv"} />
+                </div>
+                <div className="tabs">
+                    <Credits movieId={Data?.id} keyWord={"tv"} />
+                </div>
 
-                <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li className="nav-item" role="presentation">
-                        <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Recommendations</button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Similar Movies</button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Related Videos</button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-image-tab" data-bs-toggle="pill" data-bs-target="#pills-image" type="button" role="tab" aria-controls="pills-image" aria-selected="false">Related Images</button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-reviews-tab" data-bs-toggle="pill" data-bs-target="#pills-reviews" type="button" role="tab" aria-controls="pills-reviews" aria-selected="false">Reviews</button>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="pills-watch-tab" data-bs-toggle="pill" data-bs-target="#pills-watch" type="button" role="tab" aria-controls="pills-watch" aria-selected="false">Watch</button>
-                    </li>
-                </ul>
 
-                <div className="tab-content" id="pills-tabContent" >
-                    <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
-                        <Recommendations movieId={Data?.id} keyWord={"tv"} />
+
+                <div className="tabs mediaTabs">
+                    <h3>Media</h3>
+                    <ul className="nav nav-pills mb-3" id="pills-tab1" role="tablist">
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link active" id="pills-image-tab" data-bs-toggle="pill" data-bs-target="#pills-image" type="button" role="tab" aria-controls="pills-image" aria-selected="false">Related Images</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Related Videos</button>
+                        </li>
+                    </ul>
+
+                    <div className="tab-content" id="pills-tabContent" >
+
+                        <div className="tab-pane fade show active" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab" tabIndex="0">
+
+                            <Image movieId={Data?.id} keyWord={"tv"} />
+                        </div>
+
+                        <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex="0">
+                            <Videos movieId={Data?.id} keyWord={"tv"} />
+                        </div>
 
                     </div>
+                </div>
 
-                    <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
-                        <Similar movieId={Data?.id} keyWord={"tv"} />
+                <div className="tabs OtherTabs">
+                    <h3>Suggestion</h3>
+
+                    <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Recommendations</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Similar Tv-Series</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="pills-reviews-tab" data-bs-toggle="pill" data-bs-target="#pills-reviews" type="button" role="tab" aria-controls="pills-reviews" aria-selected="false">Reviews</button>
+                        </li>
+
+                    </ul>
+
+                    <div className="tab-content" id="pills-tabContent" >
+                        <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex="0">
+                            <Recommendations movieId={Data?.id} keyWord={"tv"} />
+                        </div>
+
+                        <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex="0">
+                            <Similar movieId={Data?.id} keyWord={"tv"} />
+                        </div>
+
+                        <div className="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
+                            <Reviews movieId={Data?.id} keyWord={"tv"} />
+                        </div>
+
                     </div>
-
-                    <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabIndex="0">
-                        < Videos movieId={Data?.id} keyWord={"tv"} />
-                    </div>
-
-                    <div className="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab" tabIndex="0">
-                        <Image movieId={Data?.id} keyWord={"tv"} />
-                    </div>
-
-                    <div className="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
-                        <Reviews movieId={Data?.id} keyWord={"tv"} />
-                    </div>
-
-                    <div className="tab-pane fade" id="pills-watch" role="tabpanel" aria-labelledby="pills-reviews-tab" tabIndex="0">
-                        <WatchProviders movieId={Data?.id} keyWord={"tv"} />
-                    </div>
-
 
                 </div>
 
-            </div>
+                <Footer />
+
+            </div>}
         </>
     )
 }

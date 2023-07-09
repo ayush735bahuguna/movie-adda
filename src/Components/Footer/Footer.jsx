@@ -11,7 +11,7 @@ export default function Footer() {
 
             <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
                 <li className="ms-3  footerIcons">
-                    <a className="text-body-secondary " href="#">
+                    <a className="text-body-secondary" target='_blank' href="https://instagram.com/ayush.jsx?igshid=MzNlNGNkZWQ4Mg==">
                         <i className="bi bi-instagram"></i>
                     </a>
                 </li>
@@ -21,7 +21,7 @@ export default function Footer() {
                     </a>
                 </li>
                 <li className="ms-3 footerIcons">
-                    <a className="text-body-secondary " href="#">
+                    <a className="text-body-secondary" target='_blank' href="https://github.com/ayush735bahuguna">
                         <i className="bi bi-github"></i>
                     </a>
                 </li>

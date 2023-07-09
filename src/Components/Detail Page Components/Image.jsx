@@ -15,7 +15,7 @@ export default function Image(props) {
             {loading && <h1><Loader /></h1>}
             {!loading && <div className='horizontalScrollComponent'>
 
-                {data?.backdrops?.slice(0, 10).map((e, index) => {
+                {data?.backdrops?.slice(0, 6).map((e, index) => {
 
                     return (
                         <a href={`https://image.tmdb.org/t/p/w500/${e.file_path}`} target="_blank" key={index} >
@@ -23,6 +23,10 @@ export default function Image(props) {
                         </a>
                     )
                 })}
+
+                <div >
+                    <i style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%", width: "100px", cursor: "pointer", fontSize: "50px" }} className="bi bi-arrow-right-circle-fill"></i>
+                </div>
 
             </div>}
 
