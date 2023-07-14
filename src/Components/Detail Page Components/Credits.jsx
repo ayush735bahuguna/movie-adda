@@ -1,11 +1,8 @@
 import '../../App.css'
-
-import ImageCard from "../Image Card/ImageCard"
 import useFetch from "../../Api/useFetch"
-import { useEffect } from 'react';
 import Lazyloadimage from '../Image Lazy loading/Lazyloadimage';
-import { Link } from 'react-router-dom';
 import Loader from '../loader/loader';
+import avatar from "../../asset/avatar.png";
 
 export default function Credits(props) {
 
@@ -14,27 +11,33 @@ export default function Credits(props) {
     return (
 
         <>
+
             {loading && <h1> <Loader />  </h1>}
             {!loading &&
                 <>
                     <h3>Highly Paid cast</h3>
-
-
                     <div className='horizontalScrollComponent'>
+                        {data?.cast?.slice(0, 10)?.length !== 0 ? (
+                            data?.cast?.slice(0, 10).map((e, index) => {
+                                return (
+                                    <div key={index} style={{ margin: "5px", textAlign: "center" }}>
+                                        {e.profile_path === null
+                                            ?
+                                            (<img src={avatar} style={{ height: "225px", objectFit: "cover", width: "150px", borderRadius: "7px" }} />)
+                                            :
+                                            (<Lazyloadimage imgurl={e.profile_path} css={{ height: "auto", width: "150px", borderRadius: "7px" }} />)
+                                        }
 
-                        {data?.cast?.slice(0, 10).map((e, index) => {
-                            return (
-                                <div key={index} style={{ margin: "5px", textAlign: "center" }}>
-                                    <Lazyloadimage imgurl={e.profile_path} css={{ height: "auto", width: "150px" }} />
-                                    <div id="creditName" style={{ fontWeight: "600" }}>{e.character}</div>
-                                    <div id="creditOriginalName"> [&nbsp;{e.original_name}&nbsp;]</div>
-                                </div>
-                            )
-                        })}
-
-                        <div >
-                            <i style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "80%", width: "100px", cursor: "pointer", fontSize: "50px" }} className="bi bi-arrow-right-circle-fill"></i>
-                        </div>
+                                        <div id="creditName" style={{ fontWeight: "600" }}>{e.character}</div>
+                                        <div id="creditOriginalName"> [&nbsp;{e.original_name}&nbsp;]</div>
+                                    </div>
+                                )
+                            })
+                        ) : (
+                            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "150px" }}>
+                                <div> No Credits Details Available </div>
+                            </div>
+                        )}
                     </div>
                 </>}
         </>

@@ -7,18 +7,15 @@ import Similar from '../../../Components/Detail Page Components/Similar';
 import Videos from '../../../Components/Detail Page Components/Videos';
 import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
 
-
-
 import "../../Movie Page/MovieDetailPage/MovieDetailPageCss.css"
-
 import Credits from '../../../Components/Detail Page Components/Credits';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Footer from "../../../Components/Footer/Footer"
 import Loader from '../../../Components/loader/loader';
 import CircleRating from '../../../Components/circleRating/CircleRating';
 import Lazyloadimage from '../../../Components/Image Lazy loading/Lazyloadimage';
-import { Link } from 'react-router-dom';
 
+import NoPoster from "../../../asset/no-poster.png";
 
 
 export default function TvDetailPage() {
@@ -35,7 +32,7 @@ export default function TvDetailPage() {
             let parsedData = await data.json();
             setData(parsedData);
             setloading(false);
-            // console.log(parsedData);
+            console.log(parsedData);
         }
         catch (err) {
             setloading(false);
@@ -51,7 +48,6 @@ export default function TvDetailPage() {
         <>
             {loading && <h1> <Loader /></h1>}
             {!loading && <div id='Container'>
-
                 <LazyLoadImage
                     id="background_img"
                     alt="..."
@@ -63,7 +59,9 @@ export default function TvDetailPage() {
                 <div id="content">
 
                     <div id="img_wrapper">
-                        <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
+                        {Data?.poster_path !== null ? (
+                            <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
+                        ) : (<img src={NoPoster} alt="poster" id="poster" />)}
                     </div>
 
                     <div id="details">
@@ -97,20 +95,69 @@ export default function TvDetailPage() {
                             Number Of Episodes  :  <span className='movieSmallDetails'>    {Data?.number_of_episodes}</span></div>
                         <div id="number_of_seasons">
                             Number Of Seasons  :  <span className='movieSmallDetails'>   {Data?.number_of_seasons}</span></div>
-                        <Link to={`/tv/${params.id}/epoisode`}>All Episodes</Link>
+
+
                         <hr></hr>
 
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                            <div>
-                                budget :  <span className='movieSmallDetails'> ${Data?.budget} </span>
-                            </div>
-                            <div>
-                                revenue :    <span className='movieSmallDetails'> ${Data?.revenue} </span>
-                            </div>
-                            <div></div>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-evenly", flexWrap: "wrap", width: "100%" }}>
+
+                            {Data?.last_episode_to_air !== null ? (
+                                <div style={{ textAlign: "center", margin: "5px" }}>
+                                    <div>Last episode To Air</div>
+
+                                    <LazyLoadImage
+                                        style={{ width: "100%", maxWidth: "273px", borderRadius: "7px" }}
+                                        alt="..."
+                                        effect="blur"
+                                        src={`https://image.tmdb.org/t/p/w500/${Data?.last_episode_to_air?.still_path}`}
+                                        placeholderSrc={Data?.last_episode_to_air?.still_path}
+                                    />
+
+                                    <div>
+                                        Name :&nbsp;
+                                        <span className='movieSmallDetails'>{Data?.last_episode_to_air?.name}</span>
+                                    </div>
+
+                                    <div>
+                                        Episode No :
+                                        <span className='movieSmallDetails'>{Data?.last_episode_to_air?.episode_number}</span>
+                                    </div>
+
+
+                                </div>) : ("")}
+
+                            {Data?.next_episode_to_air !== null ? (<div style={{ textAlign: "center", margin: "5px" }}>
+                                <div>Next episode To Air</div>
+
+                                <LazyLoadImage
+                                    style={{ width: "100%", maxWidth: "273px", borderRadius: "7px" }}
+                                    alt="..."
+                                    effect="blur"
+                                    src={`https://image.tmdb.org/t/p/w500/${Data?.next_episode_to_air?.still_path}`}
+                                    placeholderSrc={Data?.next_episode_to_air?.still_path}
+                                />
+
+
+
+                                <div>
+                                    Name :&nbsp;
+                                    <span className='movieSmallDetails'>{Data?.next_episode_to_air?.name}</span>
+                                </div>
+
+                                <div>
+                                    Episode No :
+                                    <span className='movieSmallDetails'>{Data?.next_episode_to_air?.episode_number}</span>
+                                </div>
+
+
+
+                            </div>) : ("")}
 
 
                         </div>
+
+
+
                         <hr></hr>
 
                         Production Companies :
@@ -204,7 +251,7 @@ export default function TvDetailPage() {
 
                 <Footer />
 
-            </div>}
+            </div >}
         </>
     )
 }

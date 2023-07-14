@@ -38,3 +38,11 @@ a {
 p {
     margin: 0px;
 }
+
+
+
+@media screen and (max-width:425px) {
+    #herosectiondetails {
+        max-width: 100vw !important;
+    }
+}

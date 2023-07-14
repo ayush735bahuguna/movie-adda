@@ -8,7 +8,6 @@ import Movie from "./Pages/Movie Page/Movie";
 import TvSeries from "./Pages/Tv Series Page/TvSeriesPage";
 import MovieDetailPage from "./Pages/Movie Page/MovieDetailPage/MovieDetailPage";
 import TvDetailPage from "./Pages/Tv Series Page/Tv details page/TvDetailPage";
-import TvEpisodesPage from "./Pages/Tv Series Page/Tv details page/Tv Episodes Page/TvEpisodesPage";
 
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
 
           <Route path="/tv" exact element={<TvSeries />} />
           <Route path="/tv/:id" element={<TvDetailPage />} />
-          <Route path="/tv/:id/epoisode" element={<TvEpisodesPage />} />
 
 
           <Route path="*" element={<Error />} />

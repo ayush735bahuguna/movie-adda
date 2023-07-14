@@ -14,16 +14,19 @@ export default function Recommendations(props) {
         <>
             {loading && <h1><Loader /></h1>}
             {!loading && <div className='horizontalScrollComponent'>
-
-                {data?.results?.map((e, index) => {
-
-                    return (
-                        <a href={`/${props.keyWord}/${e.id}`} key={index} style={{ display: "inline-block" }}>
-                            <ImageCard DataArray={e} />
-                        </a>
-                    )
-                })}
-
+                {data?.results.length !== 0 ? (
+                    data?.results?.map((e, index) => {
+                        return (
+                            <a href={`/${props.keyWord}/${e.id}`} key={index} style={{ display: "inline-block" }}>
+                                <ImageCard DataArray={e} />
+                            </a>
+                        )
+                    })
+                ) : (
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "420px" }}>
+                        <div> No recommendations </div>
+                    </div>
+                )}
             </div>}
         </>
     )

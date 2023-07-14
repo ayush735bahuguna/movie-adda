@@ -13,6 +13,7 @@ import Footer from "../../../Components/Footer/Footer"
 import Loader from '../../../Components/loader/loader';
 import CircleRating from '../../../Components/circleRating/CircleRating';
 import Lazyloadimage from '../../../Components/Image Lazy loading/Lazyloadimage';
+import NoPoster from "../../../asset/no-poster.png";
 
 
 
@@ -47,18 +48,28 @@ export default function MovieDetailPage() {
             {loading && <h1> <Loader /></h1>}
             {!loading && <div id='Container'>
 
-                <LazyLoadImage
-                    id="background_img"
-                    alt="..."
-                    effect="blur"
-                    src={`https://image.tmdb.org/t/p/w500/${Data?.backdrop_path}`}
-                    placeholderSrc={Data?.backdrop_path}
-                />
+                {Data?.backdrop_path !== null ? (
+                    <LazyLoadImage
+                        id="background_img"
+                        alt="..."
+                        effect="blur"
+                        src={`https://image.tmdb.org/t/p/original/${Data?.backdrop_path}`}
+                        placeholderSrc={Data?.backdrop_path}
+                    />
+                ) : (
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
+                        <div> No background image </div>
+                    </div>
+                )}
+
+
 
                 <div id="content"  >
 
                     <div id="img_wrapper">
-                        <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
+                        {Data?.poster_path !== null ? (
+                            <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
+                        ) : (<img src={NoPoster} alt="poster" id="poster" />)}
                     </div>
 
 
@@ -140,9 +151,6 @@ export default function MovieDetailPage() {
                     <Credits movieId={Data?.id} keyWord={"movie"} />
                 </div>
 
-
-
-
                 <div className="tabs mediaTabs">
                     <h3>Media</h3>
                     <ul className="nav nav-pills mb-3" id="pills-tab1" role="tablist">
@@ -200,8 +208,6 @@ export default function MovieDetailPage() {
                     </div>
 
                 </div>
-
-
 
                 <Footer />
             </div >

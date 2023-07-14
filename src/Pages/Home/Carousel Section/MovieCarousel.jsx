@@ -21,7 +21,7 @@ export default function MovieCarousel() {
         <>
             {loading && <h1><Loading /></h1>}
 
-            {!loading && <div className="Wrapper">
+            {!loading && <div className="Wrapper" >
                 <div style={{ display: "flex", justifyContent: "space-between", padding: "0px 20px", alignItems: "center" }}>
                     <h1>Movies</h1>
                     <Link to="/movie">More</Link>

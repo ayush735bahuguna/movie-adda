@@ -33,7 +33,7 @@ export default function InfiniteComponent(props) {
             >
 
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(235px, 1fr))", justifyContent: "center", alignItems: "center" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(235px, 1fr))", justifyItems: "center", alignItems: "center" }}>
 
 
                     {props.Data?.map((e, index) => {

@@ -4,6 +4,7 @@ import { useGlobalContext } from "../../Context"
 import { useParams } from 'react-router-dom';
 import InfiniteComponent from "../../Components/Infinite Scroll/InfiniteComponent"
 import Loader from "../../Components/loader/loader"
+import NoResults from "../../asset/no-results.png"
 
 export default function SearchPage() {
 
@@ -81,7 +82,10 @@ export default function SearchPage() {
                     </div>
                     }
                 </div >
-            ) : (<h1 style={{ margin: "10px", textAlign: "center" }}>No content available</h1 >)
+            ) : (
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <img style={{ width: "90%", maxWidth: "500px" }} src={NoResults} />
+                </div>)
             }
 
 
