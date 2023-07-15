@@ -36,7 +36,7 @@ export default function ImageCard(props) {
             </div>
 
             <div id="imageCardOverlay">
-                <CircleRating rating={props.DataArray?.vote_average.toFixed(1)} />
+                <CircleRating rating={props.DataArray?.vote_average?.toFixed(1)} />
             </div>
         </div>
     )

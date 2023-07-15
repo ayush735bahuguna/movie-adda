@@ -18,10 +18,10 @@ export default function Image(props) {
                 {data?.backdrops?.slice(0, 10)?.length !== 0 ? (
                     data?.backdrops?.slice(0, 6).map((e, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 {e.file_path !== null ?
                                     <div>
-                                        <a href={`https://image.tmdb.org/t/p/w500/${e.file_path}`} target="_blank" key={index} >
+                                        <a href={`https://image.tmdb.org/t/p/w500/${e.file_path}`} target="_blank" >
                                             <Lazyloadimage imgurl={e.file_path} css={{ margin: "5px", height: "200px", width: "auto", cursor: "pointer", borderRadius: "7px" }} />
                                         </a>
                                     </div>

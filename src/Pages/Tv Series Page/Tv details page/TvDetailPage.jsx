@@ -8,7 +8,7 @@ import Videos from '../../../Components/Detail Page Components/Videos';
 import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
 
 import "../../Movie Page/MovieDetailPage/MovieDetailPageCss.css"
-import Credits from '../../../Components/Detail Page Components/Credits';
+import Credits from '../../../Components/Detail Page Components/Credits/Credits';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Footer from "../../../Components/Footer/Footer"
 import Loader from '../../../Components/loader/loader';
@@ -32,7 +32,7 @@ export default function TvDetailPage() {
             let parsedData = await data.json();
             setData(parsedData);
             setloading(false);
-            console.log(parsedData);
+            // console.log(parsedData);
         }
         catch (err) {
             setloading(false);
@@ -75,7 +75,7 @@ export default function TvDetailPage() {
 
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "5px" }}>
                             <div id="vote_average" style={{ width: "60px" }}>
-                                <CircleRating rating={Data?.vote_average.toFixed(1)} />
+                                <CircleRating rating={Data?.vote_average?.toFixed(1)} />
                             </div>
 
                             <div></div>

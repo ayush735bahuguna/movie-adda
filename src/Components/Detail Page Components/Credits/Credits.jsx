@@ -1,13 +1,14 @@
-import '../../App.css'
-import useFetch from "../../Api/useFetch"
-import Lazyloadimage from '../Image Lazy loading/Lazyloadimage';
-import Loader from '../loader/loader';
-import avatar from "../../asset/avatar.png";
+import '../../../App.css'
+import useFetch from "../../../Api/useFetch"
+import Lazyloadimage from '../../Image Lazy loading/Lazyloadimage';
+import Loader from '../../loader/loader';
+import avatar from "../../../asset/avatar.png";
 
 export default function Credits(props) {
 
     const { data, loading } = useFetch(`/${props.keyWord}/${props.movieId}/credits`);
     // console.log(data?.cast[0]);
+
     return (
 
         <>
@@ -20,7 +21,7 @@ export default function Credits(props) {
                         {data?.cast?.slice(0, 10)?.length !== 0 ? (
                             data?.cast?.slice(0, 10).map((e, index) => {
                                 return (
-                                    <div key={index} style={{ margin: "5px", textAlign: "center" }}>
+                                    <a href={`/${props.keyWord}/credit/${e.credit_id}`} key={index} style={{ margin: "5px", textAlign: "center" }}>
                                         {e.profile_path === null
                                             ?
                                             (<img src={avatar} style={{ height: "225px", objectFit: "cover", width: "150px", borderRadius: "7px" }} />)
@@ -30,7 +31,7 @@ export default function Credits(props) {
 
                                         <div id="creditName" style={{ fontWeight: "600" }}>{e.character}</div>
                                         <div id="creditOriginalName"> [&nbsp;{e.original_name}&nbsp;]</div>
-                                    </div>
+                                    </a>
                                 )
                             })
                         ) : (

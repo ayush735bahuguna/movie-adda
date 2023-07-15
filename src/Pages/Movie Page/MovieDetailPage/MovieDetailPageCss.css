@@ -66,10 +66,12 @@
     padding: 20px;
 }
 
-/* .OtherTabs {
-    height: 500px;
-    overflow: hidden;
-} */
+#pills-tab1,
+#pills-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media screen and (max-width:600px) {
     #content {

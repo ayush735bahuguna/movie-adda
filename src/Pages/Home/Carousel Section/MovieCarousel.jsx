@@ -29,9 +29,6 @@ export default function MovieCarousel() {
 
                 <div id="movieContainer" >
                     {data?.results?.map((e, index) => {
-
-
-
                         return (
                             <a href={`/movie/${e.id}`} key={index} >
                                 <ImageCard DataArray={e} />

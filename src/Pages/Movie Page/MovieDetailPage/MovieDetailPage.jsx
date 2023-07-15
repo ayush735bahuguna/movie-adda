@@ -7,7 +7,7 @@ import Videos from '../../../Components/Detail Page Components/Videos';
 import Image from '../../../Components/Detail Page Components/Image';
 import Reviews from '../../../Components/Detail Page Components/Reviews';
 import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
-import Credits from '../../../Components/Detail Page Components/Credits';
+import Credits from '../../../Components/Detail Page Components/Credits/Credits';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Footer from "../../../Components/Footer/Footer"
 import Loader from '../../../Components/loader/loader';
@@ -85,7 +85,7 @@ export default function MovieDetailPage() {
 
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "5px" }}>
                             <div id="vote_average" style={{ width: "60px" }}>
-                                <CircleRating rating={Data?.vote_average.toFixed(1)} />
+                                <CircleRating rating={Data?.vote_average?.toFixed(1)} />
                             </div>
 
                             <div></div>
@@ -153,7 +153,7 @@ export default function MovieDetailPage() {
 
                 <div className="tabs mediaTabs">
                     <h3>Media</h3>
-                    <ul className="nav nav-pills mb-3" id="pills-tab1" role="tablist">
+                    <ul className="nav nav-pills mb-3" id="pills-tab1" role="tablist" >
                         <li className="nav-item" role="presentation">
                             <button className="nav-link active" id="pills-image-tab" data-bs-toggle="pill" data-bs-target="#pills-image" type="button" role="tab" aria-controls="pills-image" aria-selected="false">Related Images</button>
                         </li>
