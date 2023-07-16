@@ -5,7 +5,7 @@ import Recommendations from '../../../Components/Detail Page Components/Recommen
 import Reviews from '../../../Components/Detail Page Components/Reviews';
 import Similar from '../../../Components/Detail Page Components/Similar';
 import Videos from '../../../Components/Detail Page Components/Videos';
-import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
+import WatchProviders from '../../../Components/Detail Page Components/watch provider/WatchProviders';
 
 import "../../Movie Page/MovieDetailPage/MovieDetailPageCss.css"
 import Credits from '../../../Components/Detail Page Components/Credits/Credits';

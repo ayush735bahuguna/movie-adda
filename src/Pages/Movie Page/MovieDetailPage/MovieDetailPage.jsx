@@ -6,7 +6,7 @@ import Similar from '../../../Components/Detail Page Components/Similar';
 import Videos from '../../../Components/Detail Page Components/Videos';
 import Image from '../../../Components/Detail Page Components/Image';
 import Reviews from '../../../Components/Detail Page Components/Reviews';
-import WatchProviders from '../../../Components/Detail Page Components/WatchProviders';
+import WatchProviders from '../../../Components/Detail Page Components/watch provider/WatchProviders';
 import Credits from '../../../Components/Detail Page Components/Credits/Credits';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Footer from "../../../Components/Footer/Footer"
