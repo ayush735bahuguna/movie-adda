@@ -53,5 +53,7 @@ p {
 
     #CreditDetailsWrapper {
         flex-direction: column;
+        align-items: center !important;
     }
+
 }

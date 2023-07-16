@@ -17,14 +17,14 @@ export default function CreditsDetail() {
 
     return (
 
-        <div>
+        <>
 
             {loading && <h1> <Loader />  </h1>}
             {!loading &&
                 <div>
                     <div id='CreditDetailsWrapper' style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", margin: "10px" }}>
 
-                        <Lazyloadimage css={{ width: "200px", borderRadius: "7px", marginTop: "30px" }} imgurl={data?.person.profile_path} />
+                        <Lazyloadimage id="creditProfileImage" css={{ width: "200px", borderRadius: "7px", marginTop: "30px" }} imgurl={data?.person.profile_path} />
                         <div style={{ padding: "5px", margin: "20px" }}>
 
                             <p style={{ fontWeight: "600", fontSize: "25px" }}>{data?.person.original_name}</p>
@@ -47,7 +47,7 @@ export default function CreditsDetail() {
                 </div>
             }
 
-        </div>
+        </>
     )
 }
 
