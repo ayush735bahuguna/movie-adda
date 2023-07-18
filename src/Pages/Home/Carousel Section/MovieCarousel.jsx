@@ -8,13 +8,15 @@ import { useEffect } from "react";
 
 
 export default function MovieCarousel() {
-    const { setHeroSectionArray } = useGlobalContext();
+    const { setHeroSectionArray1, setHeroSectionArray2, setHeroSectionArray3 } = useGlobalContext();
 
     const Navigate = useNavigate();
     const { data, loading } = useFetch("/discover/movie");
 
     useEffect(() => {
-        setHeroSectionArray(data?.results[Math.floor(Math.random() * 20)]);
+        setHeroSectionArray1(data?.results[Math.floor(Math.random() * 20)]);
+        setHeroSectionArray2(data?.results[Math.floor(Math.random() * 20)]);
+        setHeroSectionArray3(data?.results[Math.floor(Math.random() * 20)]);
     }, [data])
 
     return (

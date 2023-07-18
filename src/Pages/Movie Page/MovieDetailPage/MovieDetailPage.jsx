@@ -82,7 +82,6 @@ export default function MovieDetailPage() {
                             {Data?.genres.map((e, index) => <div id='genersTag' className="badge text-bg-secondary" key={index}>{e.name}</div>)}
                         </div>
 
-
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "5px" }}>
                             <div id="vote_average" style={{ width: "60px" }}>
                                 <CircleRating rating={Data?.vote_average?.toFixed(1)} />
@@ -103,8 +102,6 @@ export default function MovieDetailPage() {
                             <div></div>
                         </div>
 
-
-
                         <hr></hr>
                         <div id="overview">
                             Details :<span className='movieSmallDetails'> {Data?.overview}</span>
@@ -124,22 +121,44 @@ export default function MovieDetailPage() {
                         </div>
 
                         <hr></hr>
-                        Production Companies :
-                        <div id='production_companies' style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", alignContent: "center", alignItems: "center"
-                        }}>
 
-                            {Data?.production_companies.map((e, index) =>
-                                <div key={index} className='movieSmallDetails' style={{ display: "flex", alignItems: "center", width: "fit-content", margin: "5px", flexDirection: "column" }}>
-                                    <p> {e?.name}</p>
-                                    <Lazyloadimage imgurl={e?.logo_path} css={{ height: "60px", width: "60px", ObjectFit: "contain", margin: "10px" }} />
+                        <div className="accordion" id="accordionExample">
+                            {Data?.production_companies !== undefined ? (
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header">
+
+                                        <button className="accordion-button "
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+
+                                            Production Companies :
+                                        </button>
+
+                                    </h2>
+
+                                    <div id="collapseThree" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body">
+                                            <div id='production_companies' style={{
+                                                display: "grid",
+                                                gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", alignContent: "center", alignItems: "center"
+                                            }}>
+                                                {Data?.production_companies.map((e, index) =>
+                                                    <div key={index} className='movieSmallDetails' style={{ display: "flex", alignItems: "center", width: "120px", margin: "5px", flexDirection: "column" }}>
+
+                                                        <p style={{ textAlign: "center" }}> {e?.name}</p>
+
+                                                        <Lazyloadimage imgurl={e?.logo_path} css={{ height: "auto", width: "60px", ObjectFit: "contain", margin: "10px" }} />
+
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            )}
+                            ) : ("")}
                         </div>
 
+                        <div style={{ margin: "10px" }} id="homepage"><a href={Data?.homepage}> Homepage</a> </div>
 
-                        <div id="homepage"><a href={Data?.homepage}> Homepage</a> </div>
                     </div>
 
                 </div >

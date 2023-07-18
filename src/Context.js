@@ -4,10 +4,12 @@ export const Mycontext = createContext();
 const Context = ({ children }) => {
     const Acess_key = "d1c9a9af41297f93b7ade6e2e96a03fd";
     const [query, setquery] = useState("");
-    const [HeroSectionArray, setHeroSectionArray] = useState();
+    const [HeroSectionArray1, setHeroSectionArray1] = useState();
+    const [HeroSectionArray2, setHeroSectionArray2] = useState();
+    const [HeroSectionArray3, setHeroSectionArray3] = useState();
 
     return (
-        <Mycontext.Provider value={{ query, setquery, Acess_key, HeroSectionArray, setHeroSectionArray }}>
+        <Mycontext.Provider value={{ query, setquery, Acess_key, HeroSectionArray1, setHeroSectionArray1, HeroSectionArray2, setHeroSectionArray2, HeroSectionArray3, setHeroSectionArray3 }}>
             {children}
         </Mycontext.Provider>
     )

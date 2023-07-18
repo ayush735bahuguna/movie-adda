@@ -7,10 +7,10 @@ import MovieCarousel from './Carousel Section/MovieCarousel';
 import TvCarousel from './Carousel Section/TvCarousel';
 
 export default function HomePage() {
-    const { HeroSectionArray } = useGlobalContext();
+    const { HeroSectionArray1, HeroSectionArray2, HeroSectionArray3 } = useGlobalContext();
     return (
         <>
-            <HeroSection HeroSectionArray={HeroSectionArray} />
+            <HeroSection HeroSectionArray1={HeroSectionArray1} HeroSectionArray2={HeroSectionArray2} HeroSectionArray3={HeroSectionArray3} />
             <MovieCarousel />
             <TvCarousel />
             <Footer />
