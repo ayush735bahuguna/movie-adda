@@ -4,7 +4,7 @@ import Image from '../../../Components/Detail Page Components/Image';
 import Recommendations from '../../../Components/Detail Page Components/Recommendations';
 import Reviews from '../../../Components/Detail Page Components/Reviews';
 import Similar from '../../../Components/Detail Page Components/Similar';
-import Videos from '../../../Components/Detail Page Components/Videos';
+import Videos from '../../../Components/Detail Page Components/videosSection/Videos';
 import WatchProviders from '../../../Components/Detail Page Components/watch provider/WatchProviders';
 
 import "../../Movie Page/MovieDetailPage/MovieDetailPageCss.css"

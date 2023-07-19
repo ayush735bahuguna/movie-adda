@@ -4,20 +4,27 @@ import Loader from '../loader/loader';
 
 export default function Reviews(props) {
     const { data, loading } = useFetch(`/${props.keyWord}/${props.movieId}/reviews`);
-    // console.log(data?.results?.length);
-    return (
 
+    return (
         <>
             {loading && <h1><Loader /></h1>}
-            {!loading && <div className='horizontalScrollComponent' style={{ height: "420px" }}>
-
+            {!loading && <div className='horizontalScrollComponent' style={{
+                height: "420px", flexGrow: "0",
+                flexShrink: "0"
+            }}>
                 {data?.results.length !== 0 ? (
                     data?.results?.map((e, index) => {
                         return (
-                            <div key={index} style={{ margin: "5px", border: "2px solid black" }}>
-                                <p>{e.author_details.name}</p>
-                                <p>{e.author_details.avatar_path}</p>
-                                <p>{e.content}</p>
+                            <div key={index} style={{ margin: "5px", padding: "5px", border: "2px solid black", width: "300px" }}>
+
+                                {e.author_details.name !== "" ? (
+                                    <p style={{ fontWeight: "700" }}>{e.author_details.name}</p>
+                                ) : (
+                                    <p style={{ fontWeight: "700" }}>Anonymous</p>
+                                )}
+
+                                <hr></hr>
+                                <p style={{ color: "gray", width: "290px", height: "400px", padding: "2px" }}>{e.content.slice(0, 400)} . . . . . </p>
                             </div>
                         )
                     })) : (

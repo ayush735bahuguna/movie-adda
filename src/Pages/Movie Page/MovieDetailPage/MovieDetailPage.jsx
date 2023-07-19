@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import "./MovieDetailPageCss.css"
 import Recommendations from '../../../Components/Detail Page Components/Recommendations';
 import Similar from '../../../Components/Detail Page Components/Similar';
-import Videos from '../../../Components/Detail Page Components/Videos';
+import Videos from '../../../Components/Detail Page Components/videosSection/Videos';
 import Image from '../../../Components/Detail Page Components/Image';
 import Reviews from '../../../Components/Detail Page Components/Reviews';
 import WatchProviders from '../../../Components/Detail Page Components/watch provider/WatchProviders';

@@ -1,11 +1,15 @@
-import '../../App.css'
-import useFetch from "../../Api/useFetch"
-import Loader from '../loader/loader';
+import '../../../App.css'
+import useFetch from "../../../Api/useFetch"
+import Loader from '../../loader/loader';
+import ReactPlayer from "react-player/youtube";
 
-export default function Videos(props) {
+const VideosSection = (props) => {
 
     const { data, loading } = useFetch(`/${props.keyWord}/${props.movieId}/videos`);
-    // console.log(data?.results);
+
+
+
+
 
     return (
 
@@ -17,10 +21,13 @@ export default function Videos(props) {
                     data?.results?.slice(0, 2).map((e, index) => {
                         return (
                             <div key={index} style={{ width: "400px", margin: "5px" }}>
-                                {e?.key}
-                                {/* <div className="ratio ratio-16x9">
-                                <iframe src={`https://www.youtube.com/embed/${e?.key}?rel=0`} title="YouTube video" allowFullScreen></iframe>
-                            </div> */}
+                                <ReactPlayer
+                                    url={`https://www.youtube.com/watch?v=${e.key}`}
+                                    controls
+                                    width="100%"
+                                    height="100%"
+                                // playing={true}
+                                />
                             </div>
                         )
                     })
@@ -29,9 +36,12 @@ export default function Videos(props) {
                         <div> No Videos Available </div>
                     </div>
                 )}
+            </div>
+            }
 
-
-            </div>}
         </>
-    )
-}
+
+    );
+};
+
+export default VideosSection;
