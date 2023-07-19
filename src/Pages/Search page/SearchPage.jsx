@@ -17,12 +17,14 @@ export default function SearchPage() {
 
     useEffect(() => {
         setquery(params.text);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.text]);
 
     const { data, loading } = useFetch(`/search/${Keyword}?query=${query}`, `?&page=${pageno}`);
 
     useEffect(() => {
         setData(data?.results);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
 
 
