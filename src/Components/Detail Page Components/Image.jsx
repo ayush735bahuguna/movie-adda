@@ -13,16 +13,16 @@ export default function Image(props) {
 
         <>
             {loading && <h1><Loader /></h1>}
-            {!loading && <div className='horizontalScrollComponent' style={{ height: "210px" }}>
+            {!loading && <div className='horizontalScrollComponent' style={{ height: "280px" }}>
 
-                {data?.backdrops?.slice(0, 10)?.length !== 0 ? (
+                {data?.backdrops?.length !== 0 ? (
                     data?.backdrops?.slice(0, 6).map((e, index) => {
                         return (
                             <div key={index}>
                                 {e.file_path !== null ?
                                     <div>
-                                        <a href={`https://image.tmdb.org/t/p/w500/${e.file_path}`} target="_blank" >
-                                            <Lazyloadimage imgurl={e.file_path} css={{ margin: "5px", height: "200px", width: "auto", cursor: "pointer", borderRadius: "7px" }} />
+                                        <a href={`https://image.tmdb.org/t/p/original/${e.file_path}`} target="_blank" >
+                                            <Lazyloadimage imgurl={e.file_path} css={{ margin: "5px", height: "270px", width: "auto", cursor: "pointer", borderRadius: "7px" }} />
                                         </a>
                                     </div>
                                     : ""}
@@ -33,6 +33,8 @@ export default function Image(props) {
                         <div> No Images Available </div>
                     </div>
                 )}
+
+
 
 
             </div>}

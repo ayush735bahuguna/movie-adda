@@ -29,13 +29,15 @@ export default function HeroSection(props) {
                 <div className="carousel-inner">
                     <div className="carousel-item active"  >
                         {Show1 ? (
-                            <div id="herosectiondetails" style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", maxWidth: "50vw", zIndex: "2", padding: "15px", backdropFilter: "blur(5px)", borderRadius: "7px" }} >
+                            <div id="herosectiondetails" style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", maxWidth: "50vw", zIndex: "2", padding: "15px", borderRadius: "7px" }} >
 
                                 <p> <strong style={{ fontSize: "25px" }}> {props.HeroSectionArray1?.original_title}</strong> </p>
                                 <p>{props.HeroSectionArray1?.overview?.slice(0, 100)} . . . . . .</p>
                                 <br></br>
                                 <div className="btn btn-primary" onClick={OnclickHandler1}>Visit Movie</div>
+
                             </div>
+
                         ) : (<Loader />)}
 
                         <LazyLoadImage
@@ -48,6 +50,10 @@ export default function HeroSection(props) {
 
                         />
 
+                        {Show1 ? (
+                            <div className="opacity-layer"></div>
+                        ) : ("")}
+
 
 
                     </div>
@@ -55,7 +61,7 @@ export default function HeroSection(props) {
                     <div className="carousel-item" >
                         {Show2 ? (
 
-                            <div id="herosectiondetails" style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", maxWidth: "50vw", zIndex: "2", padding: "15px", backdropFilter: "blur(5px)", borderRadius: "7px" }} >
+                            <div id="herosectiondetails" style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", maxWidth: "50vw", zIndex: "2", padding: "15px", borderRadius: "7px" }} >
 
                                 <p> <strong style={{ fontSize: "25px" }}> {props.HeroSectionArray2?.original_title}</strong> </p>
                                 <p>{props.HeroSectionArray2?.overview?.slice(0, 100)} . . . . . .</p>
@@ -72,13 +78,17 @@ export default function HeroSection(props) {
                             onLoad={() => { setShow2(true) }}
                         />
 
+                        {Show2 ? (
+                            <div className="opacity-layer"></div>
+                        ) : ("")}
+
 
                     </div>
 
                     <div className="carousel-item" >
                         {Show3 ? (
 
-                            <div id="herosectiondetails" style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", maxWidth: "50vw", zIndex: "2", padding: "15px", backdropFilter: "blur(5px)", borderRadius: "7px" }} >
+                            <div id="herosectiondetails" style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", maxWidth: "50vw", zIndex: "2", padding: "15px", borderRadius: "7px" }} >
 
                                 <p> <strong style={{ fontSize: "25px" }}> {props.HeroSectionArray3?.original_title}</strong> </p>
                                 <p>{props.HeroSectionArray3?.overview?.slice(0, 100)} . . . . . .</p>
@@ -86,6 +96,7 @@ export default function HeroSection(props) {
                                 <div className="btn btn-primary" onClick={OnclickHandler3}>Visit Movie</div>
                             </div>
                         ) : (<Loader />)}
+
                         <LazyLoadImage
                             style={{ height: "90vh", width: "100vw", objectFit: "cover", backgroundPosition: "center" }}
                             alt="..."
@@ -94,6 +105,10 @@ export default function HeroSection(props) {
                             placeholderSrc={props.HeroSectionArray3?.backdrop_path}
                             onLoad={() => { setShow3(true) }}
                         />
+
+                        {Show3 ? (
+                            <div className="opacity-layer"></div>
+                        ) : ("")}
 
 
                     </div>

@@ -10,12 +10,12 @@ export default function Reviews(props) {
             {loading && <h1><Loader /></h1>}
             {!loading && <div className='horizontalScrollComponent' style={{
                 height: "420px", flexGrow: "0",
-                flexShrink: "0"
+                flexShrink: "0", alignItems: "center"
             }}>
                 {data?.results.length !== 0 ? (
                     data?.results?.map((e, index) => {
                         return (
-                            <div key={index} style={{ margin: "5px", padding: "5px", border: "2px solid black", width: "300px" }}>
+                            <div key={index} style={{ margin: "5px", padding: "5px", border: "1px solid black", width: "400px", height: "310px" }}>
 
                                 {e.author_details.name !== "" ? (
                                     <p style={{ fontWeight: "700" }}>{e.author_details.name}</p>
@@ -24,7 +24,9 @@ export default function Reviews(props) {
                                 )}
 
                                 <hr></hr>
-                                <p style={{ color: "gray", width: "290px", height: "400px", padding: "2px" }}>{e.content.slice(0, 400)} . . . . . </p>
+
+                                <p style={{ color: "gray", width: "390px", height: "auto", padding: "2px" }}>{e.content.slice(0, 400)} . . . . . </p>
+
                             </div>
                         )
                     })) : (
