@@ -13,14 +13,9 @@ export default function InfiniteComponent(props) {
 
     useEffect(() => {
         setDataLength(props.Data?.length);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    // console.log(props.Data);
-    // console.log(props.Data?.length);
-    // console.log(props.Data?.length);
-
-    // console.log("totalresults");
-    // console.log(props);
     return (
         <>
             <InfiniteScroll

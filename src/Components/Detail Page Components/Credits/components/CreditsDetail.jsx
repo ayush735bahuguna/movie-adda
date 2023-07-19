@@ -13,7 +13,10 @@ export default function CreditsDetail() {
     const { data, loading } = useFetch(`/credit/${creditId}`);
 
     useEffect(() => { setcreditId(params.id) }, [params.id])
-    useEffect(() => { setcreditId(params.id) }, [])
+    useEffect(() => {
+        setcreditId(params.id)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
 

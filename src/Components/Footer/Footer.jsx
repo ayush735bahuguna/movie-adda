@@ -1,6 +1,5 @@
 import React from 'react'
 import "./footer.css"
-import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
@@ -15,19 +14,19 @@ export default function Footer() {
             <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
 
                 <li className="ms-3  footerIcons">
-                    <a className="text-body-secondary" target='_blank' href="https://www.linkedin.com/in/ayush-bahuguna-97baab223">
+                    <a rel="noopener noreferrer" className="text-body-secondary" target='_blank' href="https://www.linkedin.com/in/ayush-bahuguna-97baab223">
                         <i className="bi bi-linkedin"></i>
                     </a>
                 </li>
 
                 <li className="ms-3 footerIcons">
-                    <a className="text-body-secondary" target='_blank' href="https://github.com/ayush735bahuguna">
+                    <a rel="noopener noreferrer" className="text-body-secondary" target='_blank' href="https://github.com/ayush735bahuguna">
                         <i className="bi bi-github"></i>
                     </a>
                 </li>
 
                 <li className="ms-3  footerIcons">
-                    <a className="text-body-secondary" target='_blank' href="https://instagram.com/ayush.jsx?igshid=MzNlNGNkZWQ4Mg==">
+                    <a rel="noopener noreferrer" className="text-body-secondary" target='_blank' href="https://instagram.com/ayush.jsx?igshid=MzNlNGNkZWQ4Mg==">
                         <i className="bi bi-instagram"></i>
                     </a>
                 </li>

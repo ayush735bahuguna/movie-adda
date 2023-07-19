@@ -24,7 +24,7 @@ export default function Credits(props) {
                                     <a href={`/${props.keyWord}/credit/${e.credit_id}`} key={index} style={{ margin: "5px", textAlign: "center" }}>
                                         {e.profile_path === null
                                             ?
-                                            (<img src={avatar} style={{ height: "225px", objectFit: "cover", width: "150px", borderRadius: "7px" }} />)
+                                            (<img src={avatar} style={{ height: "225px", objectFit: "cover", width: "150px", borderRadius: "7px" }} alt='...' />)
                                             :
                                             (<Lazyloadimage imgurl={e.profile_path} css={{ height: "auto", width: "150px", borderRadius: "7px" }} />)
                                         }

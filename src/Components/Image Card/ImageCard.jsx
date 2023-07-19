@@ -9,7 +9,7 @@ import NoPoster from "../../asset/no-poster.png";
 export default function ImageCard(props) {
     // console.log(props.DataArray);
     return (
-        <div style={{ margin: "5px", display: "inline-block", width: "220px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "column", position: "relative", backgroundColor: "#eceaea", borderRadius: "7px", height: "410px", overflow: "hidden" }}>
+        <div style={{ margin: "5px", width: "220px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "column", position: "relative", backgroundColor: "#eceaea", borderRadius: "7px", height: "410px", overflow: "hidden" }}>
 
             {props.DataArray?.poster_path !== null ? (<LazyLoadImage
                 style={{ borderRadius: "7px 7px 0 0" }}
@@ -18,7 +18,7 @@ export default function ImageCard(props) {
                 effect="blur"
                 src={`https://image.tmdb.org/t/p/w500/${props.DataArray?.poster_path}`}
                 placeholderSrc={props.DataArray?.id}
-            />) : (<img width="220px" style={{ borderRadius: "7px 7px 0 0" }} src={NoPoster} />)}
+            />) : (<img width="220px" style={{ borderRadius: "7px 7px 0 0" }} src={NoPoster} alt='.' />)}
 
 
 

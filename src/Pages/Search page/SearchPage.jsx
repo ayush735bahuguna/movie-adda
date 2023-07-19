@@ -23,7 +23,6 @@ export default function SearchPage() {
 
     useEffect(() => {
         setData(data?.results);
-        // console.log(data?.results?.length);  // troubleshooting if 0 show no results
     }, [data]);
 
 
@@ -84,7 +83,7 @@ export default function SearchPage() {
                 </div >
             ) : (
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <img style={{ width: "90%", maxWidth: "500px" }} src={NoResults} />
+                    <img style={{ width: "90%", maxWidth: "500px" }} src={NoResults} alt='.' />
                 </div>)
             }
 

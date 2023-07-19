@@ -1,5 +1,5 @@
 import useFetch from "../../../Api/useFetch"
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useGlobalContext } from "../../../Context"
 import ImageCard from "../../../Components/Image Card/ImageCard"
 import Loading from "../../../Components/loader/loader"
@@ -10,13 +10,13 @@ import { useEffect } from "react";
 export default function MovieCarousel() {
     const { setHeroSectionArray1, setHeroSectionArray2, setHeroSectionArray3 } = useGlobalContext();
 
-    const Navigate = useNavigate();
     const { data, loading } = useFetch("/discover/movie");
 
     useEffect(() => {
         setHeroSectionArray1(data?.results[Math.floor(Math.random() * 20)]);
         setHeroSectionArray2(data?.results[Math.floor(Math.random() * 20)]);
         setHeroSectionArray3(data?.results[Math.floor(Math.random() * 20)]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data])
 
     return (

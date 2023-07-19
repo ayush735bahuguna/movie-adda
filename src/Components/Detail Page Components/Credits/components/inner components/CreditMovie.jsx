@@ -1,5 +1,4 @@
 import useFetch from '../../../../../Api/useFetch';
-import Lazyloadimage from '../../../../Image Lazy loading/Lazyloadimage';
 import Footer from "../../../../Footer/Footer";
 import ImageCard from "../../../../Image Card/ImageCard";
 import Loader from '../../../../loader/loader';
