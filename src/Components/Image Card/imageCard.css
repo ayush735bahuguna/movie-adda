@@ -7,8 +7,22 @@
     border-radius: 50%;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
+#ImageContainer {
+    margin: 5px;
+    width: 220px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    background-color: #eceaea;
+    border-radius: 7px;
+    height: 410px;
+    overflow: hidden
+}
+
+#cardDetails {
+    text-align: center;
+    margin: 5px;
 }

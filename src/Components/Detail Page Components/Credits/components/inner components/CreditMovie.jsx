@@ -20,7 +20,7 @@ export default function CreditMovie(props) {
                         {data?.cast?.slice(0, 20).map((e, index) => {
                             return (
 
-                                <a href={`/${e.media_type}/${e.id}`} key={index} style={{ margin: "5px" }}>
+                                <a className='link' href={`/${e.media_type}/${e.id}`} key={index} style={{ margin: "5px" }}>
                                     <ImageCard DataArray={e} />
                                 </a>
 

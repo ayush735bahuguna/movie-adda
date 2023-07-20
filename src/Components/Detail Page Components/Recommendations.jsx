@@ -15,7 +15,7 @@ export default function Recommendations(props) {
                 {data?.results.length !== 0 ? (
                     data?.results?.map((e, index) => {
                         return (
-                            <a href={`/${props.keyWord}/${e.id}`} key={index} style={{ display: "inline-block" }}>
+                            <a className='link' href={`/${props.keyWord}/${e.id}`} key={index} style={{ display: "inline-block" }}>
                                 <ImageCard DataArray={e} />
                             </a>
                         )

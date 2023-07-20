@@ -33,7 +33,7 @@ export default function InfiniteComponent(props) {
 
                     {props.Data?.map((e, index) => {
                         return (
-                            <a href={`/${props.Keyword}/${e.id}`} key={index} style={{ display: "inline-block", width: "fit-content" }}>
+                            <a className='link' href={`/${props.Keyword}/${e.id}`} key={index} style={{ display: "inline-block", width: "fit-content" }}>
                                 <ImageCard DataArray={e} />
                             </a>
                         )

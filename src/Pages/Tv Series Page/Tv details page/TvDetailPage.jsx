@@ -16,6 +16,7 @@ import CircleRating from '../../../Components/circleRating/CircleRating';
 import Lazyloadimage from '../../../Components/Image Lazy loading/Lazyloadimage';
 
 import NoPoster from "../../../asset/no-poster.png";
+import dayjs from 'dayjs';
 
 
 export default function TvDetailPage() {
@@ -89,7 +90,9 @@ export default function TvDetailPage() {
 
                         <span className='movieSmallDetails' style={{ margin: "5px" }} > {Data?.status}</span>
 
-                        <div id="release_date">First Air Date : {Data?.first_air_date}</div>
+                        <div id="release_date">First Air Date :
+                            {dayjs(Data?.first_air_date).format("MMM D, YYYY")}
+                        </div>
 
                         <hr></hr>
                         <div id="overview">

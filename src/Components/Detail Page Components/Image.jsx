@@ -21,7 +21,7 @@ export default function Image(props) {
                             <div key={index}>
                                 {e.file_path !== null ?
                                     <div>
-                                        <a rel="noopener noreferrer" href={`https://image.tmdb.org/t/p/original/${e.file_path}`} target="_blank" >
+                                        <a className='link' rel="noopener noreferrer" href={`https://image.tmdb.org/t/p/original/${e.file_path}`} target="_blank" >
                                             <Lazyloadimage imgurl={e.file_path} css={{ margin: "5px", height: "270px", width: "auto", cursor: "pointer", borderRadius: "7px" }} />
                                         </a>
                                     </div>

@@ -14,6 +14,7 @@ import Loader from '../../../Components/loader/loader';
 import CircleRating from '../../../Components/circleRating/CircleRating';
 import Lazyloadimage from '../../../Components/Image Lazy loading/Lazyloadimage';
 import NoPoster from "../../../asset/no-poster.png";
+import dayjs from 'dayjs';
 
 
 
@@ -100,7 +101,9 @@ export default function MovieDetailPage() {
 
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "0px 10px 0px 0px" }}>
                             <div>
-                                Release Date : <span className='movieSmallDetails'> {Data?.release_date}</span>
+                                Release Date : <span className='movieSmallDetails'>
+                                    {dayjs(Data?.release_date).format("MMM D, YYYY")}
+                                </span>
                             </div>
                             <div>
                                 Run-time : <span className='movieSmallDetails'> {Data?.runtime} min</span>
@@ -163,7 +166,8 @@ export default function MovieDetailPage() {
                             ) : ("")}
                         </div>
 
-                        <div style={{ margin: "10px" }} id="homepage"><a href={Data?.homepage}> Homepage</a> </div>
+                        <div style={{ margin: "10px" }} id="homepage">
+                            <a href={Data?.homepage}> Homepage</a> </div>
 
                     </div>
 

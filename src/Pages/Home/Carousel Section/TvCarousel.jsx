@@ -25,7 +25,7 @@ export default function TvCarousel() {
                     <div id='TvContainer'>
                         {data?.results?.map((e, index) => {
                             return (
-                                <a href={`/tv/${e.id}`} key={index} >
+                                <a className='link' href={`/tv/${e.id}`} key={index} >
                                     <ImageCard DataArray={e} />
                                 </a>
                             )
