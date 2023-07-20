@@ -12,10 +12,14 @@ export default function MovieCarousel() {
 
     const { data, loading } = useFetch("/discover/movie");
 
+    function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
     useEffect(() => {
-        setHeroSectionArray1(data?.results[Math.floor(Math.random() * 20)]);
-        setHeroSectionArray2(data?.results[Math.floor(Math.random() * 20)]);
-        setHeroSectionArray3(data?.results[Math.floor(Math.random() * 20)]);
+        setHeroSectionArray1(data?.results[Math.floor(Math.random() * (0 - 6 + 1) + 6)]);
+        setHeroSectionArray2(data?.results[Math.floor(Math.random() * (6 - 12 + 1) + 12)]);
+        setHeroSectionArray3(data?.results[Math.floor(Math.random() * (12 - 20 + 1) + 20)]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data])
 
