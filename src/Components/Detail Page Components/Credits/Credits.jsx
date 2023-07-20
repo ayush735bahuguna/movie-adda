@@ -21,7 +21,7 @@ export default function Credits(props) {
                         {data?.cast?.slice(0, 10)?.length !== 0 ? (
                             data?.cast?.slice(0, 10).map((e, index) => {
                                 return (
-                                    <a href={`/${props.keyWord}/credit/${e.credit_id}`} key={index} style={{ margin: "5px", textAlign: "center" }}>
+                                    <a className='link' href={`/${props.keyWord}/credit/${e.credit_id}`} key={index} style={{ margin: "5px", textAlign: "center" }}>
                                         {e.profile_path === null
                                             ?
                                             (<img src={avatar} style={{ height: "225px", objectFit: "cover", width: "150px", borderRadius: "7px" }} alt='...' />)
