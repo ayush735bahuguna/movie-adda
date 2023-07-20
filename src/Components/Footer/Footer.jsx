@@ -6,8 +6,9 @@ export default function Footer() {
         <footer id='FooterWrapper' className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top m-4">
             <div className="col-md-4 d-flex align-items-center">
                 <span className=" mb-md-0 text-body-secondary"> Made by Ayush Bahuguna</span>
-                &nbsp; <span>
-                    <a href="/">  | Home</a>
+                &nbsp;
+                <span>
+                    |    <a href="/">  Home</a>
                 </span>
             </div>
 
