@@ -44,7 +44,7 @@ export default function HeroSection(props) {
                             style={{ height: "90vh", width: "100vw", objectFit: "cover", backgroundPosition: "center" }}
                             alt="..."
                             effect="blur"
-                            src={`https://image.tmdb.org/t/p/original/${props.HeroSectionArray1?.backdrop_path}`}
+                            src={`https://image.tmdb.org/t/p/w780/${props.HeroSectionArray1?.backdrop_path}`}
                             placeholderSrc={props.HeroSectionArray1?.backdrop_path}
                             onLoad={() => { setShow1(true) }}
 
@@ -73,7 +73,7 @@ export default function HeroSection(props) {
                             style={{ height: "90vh", width: "100vw", objectFit: "cover", backgroundPosition: "center" }}
                             alt="..."
                             effect="blur"
-                            src={`https://image.tmdb.org/t/p/original/${props.HeroSectionArray2?.backdrop_path}`}
+                            src={`https://image.tmdb.org/t/p/w780/${props.HeroSectionArray2?.backdrop_path}`}
                             placeholderSrc={props.HeroSectionArray2?.backdrop_path}
                             onLoad={() => { setShow2(true) }}
                         />
@@ -101,7 +101,7 @@ export default function HeroSection(props) {
                             style={{ height: "90vh", width: "100vw", objectFit: "cover", backgroundPosition: "center" }}
                             alt="..."
                             effect="blur"
-                            src={`https://image.tmdb.org/t/p/original/${props.HeroSectionArray3?.backdrop_path}`}
+                            src={`https://image.tmdb.org/t/p/w780/${props.HeroSectionArray3?.backdrop_path}`}
                             placeholderSrc={props.HeroSectionArray3?.backdrop_path}
                             onLoad={() => { setShow3(true) }}
                         />

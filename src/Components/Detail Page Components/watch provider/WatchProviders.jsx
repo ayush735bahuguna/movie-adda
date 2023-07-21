@@ -42,6 +42,7 @@ export default function WatchProviders(props) {
                                                 Where to Rent?
                                             </button>
                                         </h2>
+
                                         <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                             <div className="accordion-body">
                                                 <Component Data={data?.results?.IN?.rent} />

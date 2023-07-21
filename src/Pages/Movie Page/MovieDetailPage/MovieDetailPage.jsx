@@ -60,7 +60,7 @@ export default function MovieDetailPage() {
                         id="background_img"
                         alt="..."
                         effect="blur"
-                        src={`https://image.tmdb.org/t/p/original/${Data?.backdrop_path}`}
+                        src={`https://image.tmdb.org/t/p/w780/${Data?.backdrop_path}`}
                         placeholderSrc={Data?.backdrop_path}
                     />
                 ) : (
@@ -75,7 +75,7 @@ export default function MovieDetailPage() {
 
                     <div id="img_wrapper">
                         {Data?.poster_path !== null ? (
-                            <img src={`https://image.tmdb.org/t/p/w500/${Data?.poster_path}`} alt="poster" id="poster" />
+                            <img src={`https://image.tmdb.org/t/p/w342/${Data?.poster_path}`} alt="poster" id="poster" />
                         ) : (<img src={NoPoster} alt="poster" id="poster" />)}
                     </div>
 
@@ -135,16 +135,15 @@ export default function MovieDetailPage() {
                             {Data?.production_companies !== undefined ? (
                                 <div className="accordion-item">
                                     <h2 className="accordion-header">
-
-                                        <button className="accordion-button "
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                        <button className="accordion-button collapsed"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 
                                             Production Companies :
                                         </button>
 
                                     </h2>
 
-                                    <div id="collapseThree" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div id="collapseThree" className="accordion-collapse collapse " data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
                                             <div id='production_companies' style={{
                                                 display: "grid",
@@ -168,7 +167,6 @@ export default function MovieDetailPage() {
 
                         <div style={{ margin: "10px" }} id="homepage">
                             <a href={Data?.homepage}> Homepage</a> </div>
-
                     </div>
 
                 </div >

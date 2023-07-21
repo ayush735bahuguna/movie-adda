@@ -102,3 +102,7 @@ p {
     color: black;
     font-weight: 500;
 }
+
+.dropdown-item {
+    cursor: pointer;
+}

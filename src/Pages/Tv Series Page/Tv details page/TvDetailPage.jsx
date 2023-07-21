@@ -178,15 +178,15 @@ export default function TvDetailPage() {
                                 <div className="accordion-item">
                                     <h2 className="accordion-header">
 
-                                        <button className="accordion-button "
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                        <button className="accordion-button collapsed"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 
                                             Production Companies :
                                         </button>
 
                                     </h2>
 
-                                    <div id="collapseThree" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div id="collapseThree" className="accordion-collapse collapse " data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
                                             <div id='production_companies' style={{
                                                 display: "grid",

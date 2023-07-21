@@ -9,7 +9,7 @@ export default function Lazyloadimage(props) {
             style={props.css}
             alt="..."
             effect="blur"
-            src={`https://image.tmdb.org/t/p/w500/${props.imgurl}`}
+            src={`https://image.tmdb.org/t/p/w342/${props.imgurl}`}
             placeholderSrc={props.imgurl}
         />
     )

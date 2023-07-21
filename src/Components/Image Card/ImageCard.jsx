@@ -17,7 +17,7 @@ export default function ImageCard(props) {
                     alt="..."
                     width={"220px"}
                     effect="blur"
-                    src={`https://image.tmdb.org/t/p/w500/${props.DataArray?.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w342/${props.DataArray?.poster_path}`}
                     placeholderSrc={props.DataArray?.id}
                 />
             ) : (
