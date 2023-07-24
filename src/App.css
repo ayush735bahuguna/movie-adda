@@ -10,14 +10,14 @@
     display: none;
 }
 
-.navbar {
+.navBar {
     position: sticky;
     top: 0px;
 }
 
 .bg-body-tertiary {
-    position: sticky;
-    top: 0px;
+    position: sticky !important;
+    top: 0px !important;
 }
 
 #movieContainer,
