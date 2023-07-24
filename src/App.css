@@ -10,6 +10,11 @@
     display: none;
 }
 
+nav {
+    position: sticky;
+    top: 0px;
+}
+
 .bg-body-tertiary {
     position: sticky;
     top: 0px;

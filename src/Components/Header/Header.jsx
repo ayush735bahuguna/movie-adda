@@ -1,5 +1,4 @@
 import React from 'react'
-// import { useGlobalContext } from "../../Context"
 import { Link, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../Context';
 import Logo from '../../asset/logo.png'
@@ -27,7 +26,7 @@ export default function Header() {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ zIndex: "9" }}>
+            <nav className="navbar navbar-expand-lg bg-body-tertiary shadow rounded" style={{ zIndex: "9" }}>
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand" >
                         <img style={{ width: "140px", borderRadius: "10px" }} src={Logo} alt='.' />
