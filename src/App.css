@@ -10,7 +10,7 @@
     display: none;
 }
 
-nav {
+.navbar {
     position: sticky;
     top: 0px;
 }
