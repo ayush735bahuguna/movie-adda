@@ -7,8 +7,9 @@ const Context = ({ children }) => {
     const [HeroSectionArray1, setHeroSectionArray1] = useState(null);
     const [HeroSectionArray2, setHeroSectionArray2] = useState(null);
     const [HeroSectionArray3, setHeroSectionArray3] = useState(null);
+    const [AllImages, setAllImages] = useState([]);
     return (
-        <Mycontext.Provider value={{ query, setquery, Acess_key, HeroSectionArray1, setHeroSectionArray1, HeroSectionArray2, setHeroSectionArray2, HeroSectionArray3, setHeroSectionArray3 }}>
+        <Mycontext.Provider value={{ query, setquery, Acess_key, HeroSectionArray1, setHeroSectionArray1, HeroSectionArray2, setHeroSectionArray2, HeroSectionArray3, setHeroSectionArray3, AllImages, setAllImages }}>
             {children}
         </Mycontext.Provider>
     )

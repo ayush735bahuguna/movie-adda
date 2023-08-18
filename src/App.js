@@ -9,6 +9,7 @@ import TvSeries from "./Pages/Tv Series Page/TvSeriesPage";
 import MovieDetailPage from "./Pages/Movie Page/MovieDetailPage/MovieDetailPage";
 import TvDetailPage from "./Pages/Tv Series Page/Tv details page/TvDetailPage";
 import CreditsDetail from "./Components/Detail Page Components/Credits/components/CreditsDetail";
+import AllImages from "./Components/Detail Page Components/All Images page/AllImages";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/tv" exact element={<TvSeries />} />
           <Route path="/tv/:id" element={<TvDetailPage />} />
 
+          <Route path="/allImages" element={<AllImages />} />
           <Route path="/:text/credit/:id" element={<CreditsDetail />} />
 
           <Route path="*" element={<Error />} />

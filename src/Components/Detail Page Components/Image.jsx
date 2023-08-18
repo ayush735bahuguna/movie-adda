@@ -3,16 +3,25 @@ import useFetch from "../../Api/useFetch"
 import Lazyloadimage from '../Image Lazy loading/Lazyloadimage';
 
 import Loader from '../loader/loader';
-
+import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../Context'
+import { useEffect } from 'react';
 
 export default function Image(props) {
+    const { setAllImages } = useGlobalContext()
     const { data, loading } = useFetch(`/${props.keyWord}/${props.movieId}/images`);
+    useEffect(() => {
+        setAllImages(data)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data])
     // console.log(data?.backdrops?.file_path);
 
     return (
 
         <>
+
             {loading && <h1><Loader /></h1>}
+            <Link to="/allImages">More Images</Link>
             {!loading && <div className='horizontalScrollComponent' style={{ height: "280px" }}>
 
                 {data?.backdrops?.length !== 0 ? (
@@ -33,10 +42,6 @@ export default function Image(props) {
                         <div> No Images Available </div>
                     </div>
                 )}
-
-
-
-
             </div>}
 
         </>

@@ -17,7 +17,6 @@ import NoPoster from "../../../asset/no-poster.png";
 import dayjs from 'dayjs';
 
 
-
 export default function MovieDetailPage() {
 
     const params = useParams();
@@ -192,7 +191,6 @@ export default function MovieDetailPage() {
                     <div className="tab-content" id="pills-tabContent" >
 
                         <div className="tab-pane fade show active" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab" tabIndex="0">
-
                             <Image movieId={Data?.id} keyWord={"movie"} />
                         </div>
 
